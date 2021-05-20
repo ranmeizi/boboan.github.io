@@ -1,0 +1,1 @@
+{"pageProps":{"allPostsData":[{"id":"21","title":"使用GitHub Page部署静态页面，以及.nojekyll的坑。。","tags":["github page"],"date":"2021-05-18","image":"/boboan.github.io/posts/21/1.png","abstract":"github page是免费的服务，只要你把你的静态页面放到username.github.io命名的仓库，仓库就会有一个page功能，你可以在github.io上访问你的静态页面 很简单，只要几步就可以白嫖github page，不用自己买服务器拉"}],"total":1},"__N_SSG":true}

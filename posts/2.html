@@ -1,0 +1,129 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width"/><meta charSet="utf-8"/><title>webpack简单多页面应用构建 webpack4+react构建crx项目</title><link rel="stylesheet" href="/boboan.github.io/prism/prism.css"/><script src="/boboan.github.io/prism/prism.js"></script><meta name="next-head-count" content="5"/><link rel="preload" href="/boboan.github.io/_next/static/css/ea031c1d2bc84f99b82c.css" as="style"/><link rel="stylesheet" href="/boboan.github.io/_next/static/css/ea031c1d2bc84f99b82c.css" data-n-g=""/><link rel="preload" href="/boboan.github.io/_next/static/css/57d17aee5b6a8e2e889f.css" as="style"/><link rel="stylesheet" href="/boboan.github.io/_next/static/css/57d17aee5b6a8e2e889f.css" data-n-p=""/><noscript data-n-css=""></noscript><link rel="preload" href="/boboan.github.io/_next/static/chunks/webpack-1e2c3574589f9928e453.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/framework-30ca2fd61d3981f25bc6.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/commons-666c9ea77d97f6d5889d.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/main-49c7da928d6901734eef.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/620-c297bb4641d2e42f7ec2.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/pages/_app-4ea85989b9508dee6a70.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/506-6791c8fe1b38e799b0ee.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/555-5819a55def996b98014b.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/522-e45333ebcf36799b860c.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/257-d61dc7d0ca07f45c42bb.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/pages/posts/%5Bid%5D-eb1b0e8fcea1baf1d35c.js" as="script"/></head><body><div id="__next"><div id="cd" class="jss1" style="background:#fff;height:100vh;width:100vw;left:0;top:0;position:fixed;opacity:1;z-index:999;transition:0.5s"></div><div><header class="jss72"><div class="jss77"><header class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorDefault MuiPaper-elevation4"><div class="MuiContainer-root jss90 MuiContainer-disableGutters MuiContainer-maxWidthLg"><div class="jss91 "><div class="MuiToolbar-root MuiToolbar-dense"><button class="MuiButtonBase-root MuiIconButton-root jss79 jss78 MuiIconButton-colorInherit MuiIconButton-edgeStart" tabindex="0" type="button" aria-label="open drawer"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg></span></button><h6 class="MuiTypography-root jss80 MuiTypography-h6 MuiTypography-noWrap"><a href="/boboan.github.io"><span class="jss94 logo"><span class="jss95 left">&lt; </span>Boboan<span class="jss95 right"> &gt;</span></span></a></h6><div class="jss81"><div class="MuiTabs-root"><div class="MuiTabs-scroller MuiTabs-fixed" style="overflow:hidden"><div aria-label="simple tabs example" class="MuiTabs-flexContainer" role="tablist"><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">标签</span></button><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">归档</span></button><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">关于</span></button><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">Screeps</span></button></div></div></div></div><div class="jss82"><div class="jss83"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div><div class="MuiInputBase-root jss84"><input type="text" placeholder="站内搜索" aria-label="search" class="MuiInputBase-input jss85"/></div></div><button class="MuiButtonBase-root MuiIconButton-root jss86 MuiIconButton-colorInherit MuiIconButton-edgeStart" tabindex="0" type="button" aria-label="open drawer"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"></path></svg></span></button></div></div><h3 class="jss92 "> <!-- -->webpack简单多页面应用构建 webpack4+react构建crx项目<!-- --> </h3><div role="presentation" class="jss96" style="transform:scale(0);visibility:hidden"><button class="MuiButtonBase-root MuiIconButton-root jss93 MuiIconButton-colorInherit MuiIconButton-edgeStart" tabindex="0" type="button" aria-label="open drawer"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg></span></button></div></div></header></div></header><div id="back-to-top-anchor"></div><main class="jss73"><div class="MuiContainer-root jss74 MuiContainer-disableGutters MuiContainer-maxWidthLg"><div class="jss75" style="width:0px;display:none"><div class="jss97"><div class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"><button class="MuiButtonBase-root MuiCardActionArea-root" tabindex="0" type="button"><div class="MuiCardMedia-root jss98 " style="background-image:url(&quot;/boboan.github.io/images/back1.jpg&quot;)" title="Contemplative Reptile"></div><div class="jss101 "></div><div class="MuiCardContent-root"><h2 class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom">Boboan</h2><p class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary">boboan.hand.touch(fish)</p></div><span class="MuiCardActionArea-focusHighlight"></span></button><div class="MuiCardActions-root MuiCardActions-spacing"><button class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall" tabindex="0" type="button"><span class="MuiButton-label">摸鱼</span></button><button class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall" tabindex="0" type="button"><span class="MuiButton-label">一会再摸</span></button></div></div><div class="jss102"><div class="MuiPaper-root MuiPaper-elevation4 MuiPaper-rounded"><nav class="MuiList-root jss103 MuiList-padding" aria-label="main mailbox folders"><a class="jss104" target="_blank" href="https://github.com/ranmeizi"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Github</span></div><img class="jss105" src="/boboan.github.io/images/github-icon.jpg"/></div></a><hr class="MuiDivider-root"/><a class="jss104" target="_blank" href="https://gitee.com/boboanzuiniubi"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Gitee</span></div><img class="jss105" src="/boboan.github.io/images/gitee-icon.jpg"/></div></a><hr class="MuiDivider-root"/><a class="jss104" target="_blank" href="https://www.jianshu.com/u/fc0db81874d5"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">简书</span></div><img class="jss105" src="/boboan.github.io/images/jianshu-icon.jpg"/></div></a></nav></div></div></div></div><div class="MuiPaper-root jss76 MuiPaper-elevation1 MuiPaper-rounded"><article><h1 class="utils_headingXl__1XecN" id="titleH1">webpack简单多页面应用构建 webpack4+react构建crx项目</h1><div class="utils_lightText__12Ckm"><time dateTime="2020-01-29">January 29, 2020</time></div><div class="note-view"><p>虽然说开发插件重要的不是页面而是功能性的 js，但是还是觉得 html 的部分使用框架开发页面更爽一些，所以我用 webpack 构建了一个 chrome 插件的项目，用来开发插件中的 popup/background/devtools 等页面</p>
+<p>不过我是个菜鸡，没想好功能，js 也写不利索，先把项目搭起来写个页面美美
+github 地址：<a href="https://github.com/ranmeizi/crx_webpack4">https://github.com/ranmeizi/crx_webpack4</a></p>
+<h2>引用的包以及解决的问题</h2>
+<ol>
+<li>wabpack： 帮你打包项目</li>
+<li>babel 一系列： 各种语法的翻译机</li>
+<li>react/antd/less ：使用 mvvm 框架和 ui 框架和 css 框架开发 html 真的很爽</li>
+</ol>
+<h2>新建项目</h2>
+<p>使用<code>npm init </code> 创建一个项目，新建一些文件夹，项目的目录结构大概是这样（你可以自己定）
+--myproject
+   --build :用来存放 webpack 的入口和一些配置
+   --src :你的代码
+   --package.json npm init 帮你生成的项目配置文件</p>
+<h2>webpack</h2>
+<ul>
+<li>安装 webpack
+需要安装 webpack 和 webpack-cli
+<code>npm install webpack webpack-cli --save-dev</code></li>
+<li>启动 webpack
+我们使用 js 来启动 webpack，我们在 build 目录下新建一个 build.js,这个 js 里面运行 webpack()
+参考文档：<a href="https://www.webpackjs.com/api/node/">https://www.webpackjs.com/api/node/</a></li>
+</ul>
+<p><img src="./2/1.png" alt="webpack()"></p>
+<p>添加一道 script</p>
+<pre><code class="language-javascript">"scripts": {
+    "build": "node build/build.js"
+  },
+</code></pre>
+<p>然后使用 <code>npm run build</code> 就可以运行这段 build.js 这也就是我们 webpack 的入口啦。</p>
+<ul>
+<li>webpack 的配置
+在 build 文件夹下再新建一个 webpack.config.js 这是 webpack 的配置参数
+<img src="./2/2.png" alt="webpack.config"></li>
+</ul>
+<p>我们的需求是开发 popup/background/devtools 等页面，那就是<strong>多入口</strong>的 webpack 项目，很简单官网也有示例 <a href="https://www.webpackjs.com/configuration/entry-context/">https://www.webpackjs.com/configuration/entry-context/</a>
+按照文档写法写好 entry 就好,我只写了 2 页面，<strong>同样的在 src 目录下新建你的入口 js</strong></p>
+<pre><code class="language-javascript">entry: {
+        'popup': ['./src/pages/popup/index.jsx'],
+        'background': ['./src/pages/background/index.jsx'],
+    },
+</code></pre>
+<p>新建 2 个入口的 html 文件
+<img src="./2/3.png" alt="popup.html"></p>
+<p><strong>第一个问题：htmlWebpackPlugin:什么？我打包了 js 然后 html 呢？</strong>
+js 中是创建了 react 的根组件，但是和 html 没有任何联系，这时候需要引用<code>htmlWebpackPlugin</code>
+htmlWebpackPlugin 会把模板 html 页引用 entry 中的 js，在 chunks 中要注明你引用的哪几个入口 js，比如 popup 页，只需要引用 popup 的 js</p>
+<pre><code class="language-javascript">plugins: [
+	//插件数组
+	new htmlWebpackPlugin({
+		//创建一个在内存中生成html页面插件的配置对象
+		template: path.join(__dirname, '../src/pages/background/background.html'), //指定模版页面生成内存中的hmtl
+		filename: 'background.html', //指定生成的页面名称
+		chunks: ['background'], //entry中的入口名
+	}),
+	new htmlWebpackPlugin({
+		template: path.join(__dirname, '../src/pages/popup/popup.html'),
+		filename: 'popup.html',
+		chunks: ['popup'],
+	}),
+];
+</code></pre>
+<p><strong>第二个问题：babel：啊？为什么他不认识我的 jsx 和 es567890？</strong>
+当我写好 html 和 js 后，兴高采烈的输入 npm run build ，咔咔咔报错，不认识 es6 的语法，不认识 jsx 语法，那就要引入 babel 帮我们翻译
+安装这三个模块
+@babel/core
+babel-loader
+@babel/preset-react
+<code>npm install @babel/core babel-loader @babel/preset-react --save-dev</code>
+<strong>.js/.jsx 文件</strong>
+在 module/rules 中添加 js 和 jsx 的 loader</p>
+<pre><code class="language-javascript">module: {
+        rules: [{
+            test: /\.jsx?$/, // 用正则来匹配文件路径，这段意思是匹配 js 或者 jsx
+            loader: 'babel-loader', // 加载模块 "babel" 是 "babel-loader" 的缩写
+            // include: resolve("/src")
+            exclude: /node_modules/,
+        },
+        {
+            test: /\.js?$/, // 用正则来匹配文件路径，这段意思是匹配 js 或者 jsx
+            loader: 'babel-loader', // 加载模块 "babel" 是 "babel-loader" 的缩写
+            exclude: /node_modules/,
+        }]
+    },
+</code></pre>
+<p><strong>jsx</strong>
+在项目下新建 babel 配置文件.babelrc
+里面添加配置,就能识别 jsx 语法啦</p>
+<pre><code class="language-javascript">"presets": ["@babel/preset-react"],
+</code></pre>
+<p><strong>第三个问题：babel：啊？我引用的 antd 怎么报@import 错啊？</strong>
+安装 babel-plugin-import 模块
+<code>npm install babel-plugin-import --save-dev</code>
+在.babelrc 中添加配置</p>
+<pre><code class="language-javascript">"plugins": [
+    ["import", {
+      "libraryName": "antd",
+      "libraryDirectory": "es",
+      "style": true
+    }]
+  ]
+</code></pre>
+<p>肯定还会报错，因为识别不了 style 语法和 less 语法，所以再引入 less 和 loader
+<code>npm install less less-loader style-loader css-loader --save-dev</code>
+在 webpack.config.js 中的 module/rules 添加一条 less 的配置</p>
+<pre><code class="language-javascript">{
+            test: /\.less$/,
+            use: [
+                'style-loader',
+                { loader: 'css-loader', options: { importLoaders: 1 } },
+                'less-loader'
+            ]
+        }
+</code></pre>
+<p><strong>第四个问题：crx:html 页面弄好了，那我的 manifest.json，conten_scripts 什么的呢？</strong>
+manifest.json，conten_scripts 当作静态资源直接复制粘贴到 dist 目录下就好了
+用<code>shelljs</code>模块帮我们执行命令</p>
+<pre><code class="language-javascript">//复制static文件架中的东西
+const assetsPath = path.join(__dirname, '../dist');
+shell.rm('-rf', assetsPath);
+shell.mkdir('-p', assetsPath);
+shell.config.silent = true;
+shell.cp('-R', 'src/static/*', assetsPath);
+shell.config.silent = false;
+</code></pre>
+<p>终于不报错了，可以用框架开开心心的开发 html 页了
+<img src="./2/4.png" alt="popup.html"></p>
+</div></article></div></div></main></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"postData":{"id":"2","contentHtml":"\u003cp\u003e虽然说开发插件重要的不是页面而是功能性的 js，但是还是觉得 html 的部分使用框架开发页面更爽一些，所以我用 webpack 构建了一个 chrome 插件的项目，用来开发插件中的 popup/background/devtools 等页面\u003c/p\u003e\n\u003cp\u003e不过我是个菜鸡，没想好功能，js 也写不利索，先把项目搭起来写个页面美美\ngithub 地址：\u003ca href=\"https://github.com/ranmeizi/crx_webpack4\"\u003ehttps://github.com/ranmeizi/crx_webpack4\u003c/a\u003e\u003c/p\u003e\n\u003ch2\u003e引用的包以及解决的问题\u003c/h2\u003e\n\u003col\u003e\n\u003cli\u003ewabpack： 帮你打包项目\u003c/li\u003e\n\u003cli\u003ebabel 一系列： 各种语法的翻译机\u003c/li\u003e\n\u003cli\u003ereact/antd/less ：使用 mvvm 框架和 ui 框架和 css 框架开发 html 真的很爽\u003c/li\u003e\n\u003c/ol\u003e\n\u003ch2\u003e新建项目\u003c/h2\u003e\n\u003cp\u003e使用\u003ccode\u003enpm init \u003c/code\u003e 创建一个项目，新建一些文件夹，项目的目录结构大概是这样（你可以自己定）\n--myproject\n   --build :用来存放 webpack 的入口和一些配置\n   --src :你的代码\n   --package.json npm init 帮你生成的项目配置文件\u003c/p\u003e\n\u003ch2\u003ewebpack\u003c/h2\u003e\n\u003cul\u003e\n\u003cli\u003e安装 webpack\n需要安装 webpack 和 webpack-cli\n\u003ccode\u003enpm install webpack webpack-cli --save-dev\u003c/code\u003e\u003c/li\u003e\n\u003cli\u003e启动 webpack\n我们使用 js 来启动 webpack，我们在 build 目录下新建一个 build.js,这个 js 里面运行 webpack()\n参考文档：\u003ca href=\"https://www.webpackjs.com/api/node/\"\u003ehttps://www.webpackjs.com/api/node/\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e\u003cimg src=\"./2/1.png\" alt=\"webpack()\"\u003e\u003c/p\u003e\n\u003cp\u003e添加一道 script\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e\"scripts\": {\n    \"build\": \"node build/build.js\"\n  },\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e然后使用 \u003ccode\u003enpm run build\u003c/code\u003e 就可以运行这段 build.js 这也就是我们 webpack 的入口啦。\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003ewebpack 的配置\n在 build 文件夹下再新建一个 webpack.config.js 这是 webpack 的配置参数\n\u003cimg src=\"./2/2.png\" alt=\"webpack.config\"\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e我们的需求是开发 popup/background/devtools 等页面，那就是\u003cstrong\u003e多入口\u003c/strong\u003e的 webpack 项目，很简单官网也有示例 \u003ca href=\"https://www.webpackjs.com/configuration/entry-context/\"\u003ehttps://www.webpackjs.com/configuration/entry-context/\u003c/a\u003e\n按照文档写法写好 entry 就好,我只写了 2 页面，\u003cstrong\u003e同样的在 src 目录下新建你的入口 js\u003c/strong\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003eentry: {\n        'popup': ['./src/pages/popup/index.jsx'],\n        'background': ['./src/pages/background/index.jsx'],\n    },\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e新建 2 个入口的 html 文件\n\u003cimg src=\"./2/3.png\" alt=\"popup.html\"\u003e\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003e第一个问题：htmlWebpackPlugin:什么？我打包了 js 然后 html 呢？\u003c/strong\u003e\njs 中是创建了 react 的根组件，但是和 html 没有任何联系，这时候需要引用\u003ccode\u003ehtmlWebpackPlugin\u003c/code\u003e\nhtmlWebpackPlugin 会把模板 html 页引用 entry 中的 js，在 chunks 中要注明你引用的哪几个入口 js，比如 popup 页，只需要引用 popup 的 js\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003eplugins: [\n\t//插件数组\n\tnew htmlWebpackPlugin({\n\t\t//创建一个在内存中生成html页面插件的配置对象\n\t\ttemplate: path.join(__dirname, '../src/pages/background/background.html'), //指定模版页面生成内存中的hmtl\n\t\tfilename: 'background.html', //指定生成的页面名称\n\t\tchunks: ['background'], //entry中的入口名\n\t}),\n\tnew htmlWebpackPlugin({\n\t\ttemplate: path.join(__dirname, '../src/pages/popup/popup.html'),\n\t\tfilename: 'popup.html',\n\t\tchunks: ['popup'],\n\t}),\n];\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e第二个问题：babel：啊？为什么他不认识我的 jsx 和 es567890？\u003c/strong\u003e\n当我写好 html 和 js 后，兴高采烈的输入 npm run build ，咔咔咔报错，不认识 es6 的语法，不认识 jsx 语法，那就要引入 babel 帮我们翻译\n安装这三个模块\n@babel/core\nbabel-loader\n@babel/preset-react\n\u003ccode\u003enpm install @babel/core babel-loader @babel/preset-react --save-dev\u003c/code\u003e\n\u003cstrong\u003e.js/.jsx 文件\u003c/strong\u003e\n在 module/rules 中添加 js 和 jsx 的 loader\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003emodule: {\n        rules: [{\n            test: /\\.jsx?$/, // 用正则来匹配文件路径，这段意思是匹配 js 或者 jsx\n            loader: 'babel-loader', // 加载模块 \"babel\" 是 \"babel-loader\" 的缩写\n            // include: resolve(\"/src\")\n            exclude: /node_modules/,\n        },\n        {\n            test: /\\.js?$/, // 用正则来匹配文件路径，这段意思是匹配 js 或者 jsx\n            loader: 'babel-loader', // 加载模块 \"babel\" 是 \"babel-loader\" 的缩写\n            exclude: /node_modules/,\n        }]\n    },\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003ejsx\u003c/strong\u003e\n在项目下新建 babel 配置文件.babelrc\n里面添加配置,就能识别 jsx 语法啦\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e\"presets\": [\"@babel/preset-react\"],\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e第三个问题：babel：啊？我引用的 antd 怎么报@import 错啊？\u003c/strong\u003e\n安装 babel-plugin-import 模块\n\u003ccode\u003enpm install babel-plugin-import --save-dev\u003c/code\u003e\n在.babelrc 中添加配置\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e\"plugins\": [\n    [\"import\", {\n      \"libraryName\": \"antd\",\n      \"libraryDirectory\": \"es\",\n      \"style\": true\n    }]\n  ]\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e肯定还会报错，因为识别不了 style 语法和 less 语法，所以再引入 less 和 loader\n\u003ccode\u003enpm install less less-loader style-loader css-loader --save-dev\u003c/code\u003e\n在 webpack.config.js 中的 module/rules 添加一条 less 的配置\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e{\n            test: /\\.less$/,\n            use: [\n                'style-loader',\n                { loader: 'css-loader', options: { importLoaders: 1 } },\n                'less-loader'\n            ]\n        }\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e\u003cstrong\u003e第四个问题：crx:html 页面弄好了，那我的 manifest.json，conten_scripts 什么的呢？\u003c/strong\u003e\nmanifest.json，conten_scripts 当作静态资源直接复制粘贴到 dist 目录下就好了\n用\u003ccode\u003eshelljs\u003c/code\u003e模块帮我们执行命令\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e//复制static文件架中的东西\nconst assetsPath = path.join(__dirname, '../dist');\nshell.rm('-rf', assetsPath);\nshell.mkdir('-p', assetsPath);\nshell.config.silent = true;\nshell.cp('-R', 'src/static/*', assetsPath);\nshell.config.silent = false;\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e终于不报错了，可以用框架开开心心的开发 html 页了\n\u003cimg src=\"./2/4.png\" alt=\"popup.html\"\u003e\u003c/p\u003e\n","title":"webpack简单多页面应用构建 webpack4+react构建crx项目","tags":["webpack"],"date":"2020-01-29","image":"/2/1.png","abstract":"虽然说开发插件重要的不是页面而是功能性的 js，但是还是觉得 html 的部分使用框架开发页面更爽一些，所以我用 webpack 构建了一个 chrome 插件的项目，用来开发插件中的 popup/background/devtools 等页面\n不过我是个菜鸡，没想好功能，js 也写不利索，先把项目搭起来写个页面美美"}},"__N_SSG":true},"page":"/posts/[id]","query":{"id":"2"},"buildId":"V73A7xuOJj_dCX4Sowzmy","assetPrefix":"/boboan.github.io","isFallback":false,"gsp":true}</script><script nomodule="" src="/boboan.github.io/_next/static/chunks/polyfills-8683bd742a84c1edd48c.js"></script><script src="/boboan.github.io/_next/static/chunks/webpack-1e2c3574589f9928e453.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/framework-30ca2fd61d3981f25bc6.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/commons-666c9ea77d97f6d5889d.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/main-49c7da928d6901734eef.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/620-c297bb4641d2e42f7ec2.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/pages/_app-4ea85989b9508dee6a70.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/506-6791c8fe1b38e799b0ee.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/555-5819a55def996b98014b.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/522-e45333ebcf36799b860c.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/257-d61dc7d0ca07f45c42bb.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/pages/posts/%5Bid%5D-eb1b0e8fcea1baf1d35c.js" async=""></script><script src="/boboan.github.io/_next/static/V73A7xuOJj_dCX4Sowzmy/_buildManifest.js" async=""></script><script src="/boboan.github.io/_next/static/V73A7xuOJj_dCX4Sowzmy/_ssgManifest.js" async=""></script></body></html>

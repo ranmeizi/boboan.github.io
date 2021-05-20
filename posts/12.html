@@ -1,0 +1,199 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width"/><meta charSet="utf-8"/><title>正六边形棋盘的思路</title><link rel="stylesheet" href="/boboan.github.io/prism/prism.css"/><script src="/boboan.github.io/prism/prism.js"></script><meta name="next-head-count" content="5"/><link rel="preload" href="/boboan.github.io/_next/static/css/ea031c1d2bc84f99b82c.css" as="style"/><link rel="stylesheet" href="/boboan.github.io/_next/static/css/ea031c1d2bc84f99b82c.css" data-n-g=""/><link rel="preload" href="/boboan.github.io/_next/static/css/57d17aee5b6a8e2e889f.css" as="style"/><link rel="stylesheet" href="/boboan.github.io/_next/static/css/57d17aee5b6a8e2e889f.css" data-n-p=""/><noscript data-n-css=""></noscript><link rel="preload" href="/boboan.github.io/_next/static/chunks/webpack-1e2c3574589f9928e453.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/framework-30ca2fd61d3981f25bc6.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/commons-666c9ea77d97f6d5889d.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/main-49c7da928d6901734eef.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/620-c297bb4641d2e42f7ec2.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/pages/_app-4ea85989b9508dee6a70.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/506-6791c8fe1b38e799b0ee.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/555-5819a55def996b98014b.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/522-e45333ebcf36799b860c.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/257-d61dc7d0ca07f45c42bb.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/pages/posts/%5Bid%5D-eb1b0e8fcea1baf1d35c.js" as="script"/></head><body><div id="__next"><div id="cd" class="jss1" style="background:#fff;height:100vh;width:100vw;left:0;top:0;position:fixed;opacity:1;z-index:999;transition:0.5s"></div><div><header class="jss38"><div class="jss43"><header class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorDefault MuiPaper-elevation4"><div class="MuiContainer-root jss56 MuiContainer-disableGutters MuiContainer-maxWidthLg"><div class="jss57 "><div class="MuiToolbar-root MuiToolbar-dense"><button class="MuiButtonBase-root MuiIconButton-root jss45 jss44 MuiIconButton-colorInherit MuiIconButton-edgeStart" tabindex="0" type="button" aria-label="open drawer"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg></span></button><h6 class="MuiTypography-root jss46 MuiTypography-h6 MuiTypography-noWrap"><a href="/boboan.github.io"><span class="jss60 logo"><span class="jss61 left">&lt; </span>Boboan<span class="jss61 right"> &gt;</span></span></a></h6><div class="jss47"><div class="MuiTabs-root"><div class="MuiTabs-scroller MuiTabs-fixed" style="overflow:hidden"><div aria-label="simple tabs example" class="MuiTabs-flexContainer" role="tablist"><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">标签</span></button><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">归档</span></button><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">关于</span></button><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">Screeps</span></button></div></div></div></div><div class="jss48"><div class="jss49"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div><div class="MuiInputBase-root jss50"><input type="text" placeholder="站内搜索" aria-label="search" class="MuiInputBase-input jss51"/></div></div><button class="MuiButtonBase-root MuiIconButton-root jss52 MuiIconButton-colorInherit MuiIconButton-edgeStart" tabindex="0" type="button" aria-label="open drawer"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"></path></svg></span></button></div></div><h3 class="jss58 "> <!-- -->正六边形棋盘的思路<!-- --> </h3><div role="presentation" class="jss62" style="transform:scale(0);visibility:hidden"><button class="MuiButtonBase-root MuiIconButton-root jss59 MuiIconButton-colorInherit MuiIconButton-edgeStart" tabindex="0" type="button" aria-label="open drawer"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg></span></button></div></div></header></div></header><div id="back-to-top-anchor"></div><main class="jss39"><div class="MuiContainer-root jss40 MuiContainer-disableGutters MuiContainer-maxWidthLg"><div class="jss41" style="width:0px;display:none"><div class="jss63"><div class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"><button class="MuiButtonBase-root MuiCardActionArea-root" tabindex="0" type="button"><div class="MuiCardMedia-root jss64 " style="background-image:url(&quot;/boboan.github.io/images/back1.jpg&quot;)" title="Contemplative Reptile"></div><div class="jss67 "></div><div class="MuiCardContent-root"><h2 class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom">Boboan</h2><p class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary">boboan.hand.touch(fish)</p></div><span class="MuiCardActionArea-focusHighlight"></span></button><div class="MuiCardActions-root MuiCardActions-spacing"><button class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall" tabindex="0" type="button"><span class="MuiButton-label">摸鱼</span></button><button class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall" tabindex="0" type="button"><span class="MuiButton-label">一会再摸</span></button></div></div><div class="jss68"><div class="MuiPaper-root MuiPaper-elevation4 MuiPaper-rounded"><nav class="MuiList-root jss69 MuiList-padding" aria-label="main mailbox folders"><a class="jss70" target="_blank" href="https://github.com/ranmeizi"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Github</span></div><img class="jss71" src="/boboan.github.io/images/github-icon.jpg"/></div></a><hr class="MuiDivider-root"/><a class="jss70" target="_blank" href="https://gitee.com/boboanzuiniubi"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Gitee</span></div><img class="jss71" src="/boboan.github.io/images/gitee-icon.jpg"/></div></a><hr class="MuiDivider-root"/><a class="jss70" target="_blank" href="https://www.jianshu.com/u/fc0db81874d5"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">简书</span></div><img class="jss71" src="/boboan.github.io/images/jianshu-icon.jpg"/></div></a></nav></div></div></div></div><div class="MuiPaper-root jss42 MuiPaper-elevation1 MuiPaper-rounded"><article><h1 class="utils_headingXl__1XecN" id="titleH1">正六边形棋盘的思路</h1><div class="utils_lightText__12Ckm"><time dateTime="2020-11-07">November 7, 2020</time></div><div class="note-view"><p><img src="./12/1.png" alt="image.png">
+这是一个正六边形的棋盘，里面的格子都是由正三角形组成的
+棋子也是由正三角形组成的，棋子要落在棋盘上，就要知道棋子的位置
+研究的问题是，怎么去描述棋子的位置
+经过数学大神点播后，有了一点想法，分享一个思路</p>
+<h1>化简化简</h1>
+<ol>
+<li>格子编号
+因为棋子和棋盘都是由格子组成的，想了半天，我觉得给格子编号会比较方便</li>
+<li>棋盘分区
+正六边形其实可以看做是 6 块三角形组成的，在平面直角坐标系中按照原点旋转是有公式的
+x1=cos(angle)<em>x-sin(angle)</em>y;
+y1=cos(angle)<em>y+sin(angle)</em>x;
+那么这个正六边形，就可以看作由 1 个三角形旋转不同角度获得的
+给棋盘分为 6 个区，那么研究的问题就变成了一个正三角形</li>
+<li>建立坐标系
+选了一个自己算着舒服的三角形建立坐标系
+<img src="./12/2.png" alt="image.png"></li>
+<li>分层编号，寻找规律
+<img src="./12/3.png" alt="image.png"></li>
+</ol>
+<ul>
+<li>每一层的 Y 轴坐标相差 √3/2</li>
+<li>每个编号的 X 轴坐标相差 1/2</li>
+<li>唯一不同的是编号 3 是朝上的三角形，而编号 1，2，4 是朝下的三角形，但是通过分层可以发现，每层<strong>奇数</strong>号的三角形是朝下的，<strong>偶数</strong>号的三角形是朝上的</li>
+<li>而且朝上的三角形与朝下的三角形,他们的 Y 轴坐标也是加减 √3/2，X 轴不变（见绿色三角形）</li>
+</ul>
+<h1>代码实现</h1>
+<pre><code class="language-javascript">let baseAreas = 6;
+let baseIds = 81;
+const G3 = Math.sqrt(3);
+// 把所有三角都看作是1,1的三角变换而来,那么保存一个1,1三角的坐标
+const defaultTri = [
+	[0, 0],
+	[1 / 2, G3 / 2],
+	[-1 / 2, G3 / 2],
+];
+// 根据area和id获取三角形3个顶点坐标
+function getVertex(id) {
+	const [tier, index] = getTier(id);
+	// 根据11变换
+	let coord = transform(tier, index);
+	// index如果是偶数,y轴坐标需要变换
+	if (index % 2 === 0) {
+		coord = indexTransformY(coord);
+	}
+	return coord;
+}
+
+// 根据id获取在area中的层数与该层第几个
+function getTier(id) {
+	const tier = Math.ceil(Math.sqrt(id));
+	// 减去上一层的总数
+	const index = id - Math.pow(tier - 1, 2);
+	return [tier, index];
+}
+
+function transform(tier, index) {
+	// X=(tier-index)*1/2
+	// y=(tier-1)*G3/2
+	return defaultTri.map(([x, y]) => [x + ((tier - index) * 1) / 2, y + ((tier - 1) * G3) / 2]);
+}
+
+function indexTransformY([[x1, y1], [x2, y2], [x3, y3]]) {
+	return [
+		[x1, y1 + G3 / 2],
+		[x2, y2 - G3 / 2],
+		[x3, y3 - G3 / 2],
+	];
+}
+
+/* 
+	变换的每个area旋转60°
+	x1=cos(angle)*x-sin(angle)*y;
+	y1=cos(angle)*y+sin(angle)*x;
+*/
+function rotate(area, coord) {
+	const arg = ((area - 1) * 60 * 2 * Math.PI) / 360;
+	return coord.map(([x, y]) => [Math.cos(arg) * x - Math.sin(arg) * y, Math.cos(arg) * y + Math.sin(arg) * x]);
+}
+</code></pre>
+<ol>
+<li>主方法是<strong>getVertex</strong>和<strong>rotate</strong>，getVertex 负责根据编号获取三角形的 3 个顶点坐标，rotate 负责根据分区旋转这个坐标</li>
+<li><strong>getTier</strong>根据编号获取层数</li>
+<li><strong>transform</strong> 根据编号规律(层以及层内编号)获得三角形顶点坐标</li>
+<li><strong>indexTransformY</strong>根据本层编号奇偶去做 Y 轴变换
+通过拆分成几个小问题就比较清晰拉~去实现每一个小问题的 function 就可以了</li>
+</ol>
+<h1>验证</h1>
+<p><img src="./12/4.gif" alt="sanjiao.gif"></p>
+<p>附上一个比较直观的画图方法</p>
+<pre><code class="language-javascript">// 画图验证
+window.onload = function () {
+	btn.addEventListener('click', () => {
+		// 获取area
+		let area = document.getElementById('area').value;
+		let id = document.getElementById('id').value;
+		tri = [area, id];
+		draw();
+	});
+	canvas.addEventListener('mousewheel', ({ deltaY }) => {
+		if (deltaY &#x3C; 0) {
+			zoom = zoom + 2;
+		} else {
+			zoom = zoom - 2 &#x3C; 0 ? 2 : zoom - 2;
+		}
+		draw();
+	});
+	canvas.addEventListener('mousedown', mouseDown);
+	draw();
+};
+
+function mouseDown() {
+	window.addEventListener('mousemove', mouseMove);
+	window.addEventListener('mouseup', mouseUp);
+}
+
+function mouseUp() {
+	window.removeEventListener('mousemove', mouseMove);
+	window.removeEventListener('mouseup', mouseUp);
+}
+
+function mouseMove({ movementX, movementY }) {
+	origin[0] = origin[0] + movementX;
+	origin[1] = origin[1] + movementY;
+	draw();
+}
+
+board = []; // 棋盘
+tri = []; // 三角
+
+for (let i = 1; i &#x3C;= baseAreas; i++) {
+	for (let j = 1; j &#x3C;= baseIds; j++) {
+		board.push(rotate(i, getVertex(j)));
+	}
+}
+
+let zoom = 30;
+const origin = [0, 0];
+
+function draw() {
+	drawBoard();
+	drawTarget();
+}
+
+function drawBoard() {
+	// 画棋盘
+	const { clientWidth: width, clientHeight: height } = canvas;
+
+	let oX = width / 2;
+	let oY = height / 2;
+	const ctx = canvas.getContext('2d');
+	ctx.fillStyle = '#fff';
+	ctx.fillRect(0, 0, width, height);
+	ctx.lineWidth = 1;
+	ctx.strokeStyle = '#000';
+	const [dx, dy] = origin;
+	board.forEach(([[x1, y1], [x2, y2], [x3, y3]]) => {
+		ctx.beginPath();
+		// canvas y轴取反
+		y1 = -y1;
+		y2 = -y2;
+		y3 = -y3;
+		ctx.moveTo(x1 * zoom + oX + dx, y1 * zoom + oY + dy);
+		ctx.lineTo(x2 * zoom + oX + dx, y2 * zoom + oY + dy);
+		ctx.lineTo(x3 * zoom + oX + dx, y3 * zoom + oY + dy);
+		ctx.closePath();
+		ctx.stroke();
+	});
+}
+
+function drawTarget() {
+	const { clientWidth: width, clientHeight: height } = canvas;
+
+	let oX = width / 2;
+	let oY = height / 2;
+	const ctx = canvas.getContext('2d');
+
+	const [dx, dy] = origin;
+	const [area, id] = tri;
+
+	if (area &#x26;&#x26; id) {
+		let [[x1, y1], [x2, y2], [x3, y3]] = rotate(area, getVertex(id));
+		ctx.lineWidth = 2;
+		ctx.strokeStyle = 'red';
+		ctx.beginPath();
+		// canvas y轴取反
+		y1 = -y1;
+		y2 = -y2;
+		y3 = -y3;
+		ctx.moveTo(x1 * zoom + oX + dx, y1 * zoom + oY + dy);
+		ctx.lineTo(x2 * zoom + oX + dx, y2 * zoom + oY + dy);
+		ctx.lineTo(x3 * zoom + oX + dx, y3 * zoom + oY + dy);
+		ctx.closePath();
+		ctx.stroke();
+	}
+}
+</code></pre>
+</div></article></div></div></main></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"postData":{"id":"12","contentHtml":"\u003cp\u003e\u003cimg src=\"./12/1.png\" alt=\"image.png\"\u003e\n这是一个正六边形的棋盘，里面的格子都是由正三角形组成的\n棋子也是由正三角形组成的，棋子要落在棋盘上，就要知道棋子的位置\n研究的问题是，怎么去描述棋子的位置\n经过数学大神点播后，有了一点想法，分享一个思路\u003c/p\u003e\n\u003ch1\u003e化简化简\u003c/h1\u003e\n\u003col\u003e\n\u003cli\u003e格子编号\n因为棋子和棋盘都是由格子组成的，想了半天，我觉得给格子编号会比较方便\u003c/li\u003e\n\u003cli\u003e棋盘分区\n正六边形其实可以看做是 6 块三角形组成的，在平面直角坐标系中按照原点旋转是有公式的\nx1=cos(angle)\u003cem\u003ex-sin(angle)\u003c/em\u003ey;\ny1=cos(angle)\u003cem\u003ey+sin(angle)\u003c/em\u003ex;\n那么这个正六边形，就可以看作由 1 个三角形旋转不同角度获得的\n给棋盘分为 6 个区，那么研究的问题就变成了一个正三角形\u003c/li\u003e\n\u003cli\u003e建立坐标系\n选了一个自己算着舒服的三角形建立坐标系\n\u003cimg src=\"./12/2.png\" alt=\"image.png\"\u003e\u003c/li\u003e\n\u003cli\u003e分层编号，寻找规律\n\u003cimg src=\"./12/3.png\" alt=\"image.png\"\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003cul\u003e\n\u003cli\u003e每一层的 Y 轴坐标相差 √3/2\u003c/li\u003e\n\u003cli\u003e每个编号的 X 轴坐标相差 1/2\u003c/li\u003e\n\u003cli\u003e唯一不同的是编号 3 是朝上的三角形，而编号 1，2，4 是朝下的三角形，但是通过分层可以发现，每层\u003cstrong\u003e奇数\u003c/strong\u003e号的三角形是朝下的，\u003cstrong\u003e偶数\u003c/strong\u003e号的三角形是朝上的\u003c/li\u003e\n\u003cli\u003e而且朝上的三角形与朝下的三角形,他们的 Y 轴坐标也是加减 √3/2，X 轴不变（见绿色三角形）\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch1\u003e代码实现\u003c/h1\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003elet baseAreas = 6;\nlet baseIds = 81;\nconst G3 = Math.sqrt(3);\n// 把所有三角都看作是1,1的三角变换而来,那么保存一个1,1三角的坐标\nconst defaultTri = [\n\t[0, 0],\n\t[1 / 2, G3 / 2],\n\t[-1 / 2, G3 / 2],\n];\n// 根据area和id获取三角形3个顶点坐标\nfunction getVertex(id) {\n\tconst [tier, index] = getTier(id);\n\t// 根据11变换\n\tlet coord = transform(tier, index);\n\t// index如果是偶数,y轴坐标需要变换\n\tif (index % 2 === 0) {\n\t\tcoord = indexTransformY(coord);\n\t}\n\treturn coord;\n}\n\n// 根据id获取在area中的层数与该层第几个\nfunction getTier(id) {\n\tconst tier = Math.ceil(Math.sqrt(id));\n\t// 减去上一层的总数\n\tconst index = id - Math.pow(tier - 1, 2);\n\treturn [tier, index];\n}\n\nfunction transform(tier, index) {\n\t// X=(tier-index)*1/2\n\t// y=(tier-1)*G3/2\n\treturn defaultTri.map(([x, y]) =\u003e [x + ((tier - index) * 1) / 2, y + ((tier - 1) * G3) / 2]);\n}\n\nfunction indexTransformY([[x1, y1], [x2, y2], [x3, y3]]) {\n\treturn [\n\t\t[x1, y1 + G3 / 2],\n\t\t[x2, y2 - G3 / 2],\n\t\t[x3, y3 - G3 / 2],\n\t];\n}\n\n/* \n\t变换的每个area旋转60°\n\tx1=cos(angle)*x-sin(angle)*y;\n\ty1=cos(angle)*y+sin(angle)*x;\n*/\nfunction rotate(area, coord) {\n\tconst arg = ((area - 1) * 60 * 2 * Math.PI) / 360;\n\treturn coord.map(([x, y]) =\u003e [Math.cos(arg) * x - Math.sin(arg) * y, Math.cos(arg) * y + Math.sin(arg) * x]);\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003col\u003e\n\u003cli\u003e主方法是\u003cstrong\u003egetVertex\u003c/strong\u003e和\u003cstrong\u003erotate\u003c/strong\u003e，getVertex 负责根据编号获取三角形的 3 个顶点坐标，rotate 负责根据分区旋转这个坐标\u003c/li\u003e\n\u003cli\u003e\u003cstrong\u003egetTier\u003c/strong\u003e根据编号获取层数\u003c/li\u003e\n\u003cli\u003e\u003cstrong\u003etransform\u003c/strong\u003e 根据编号规律(层以及层内编号)获得三角形顶点坐标\u003c/li\u003e\n\u003cli\u003e\u003cstrong\u003eindexTransformY\u003c/strong\u003e根据本层编号奇偶去做 Y 轴变换\n通过拆分成几个小问题就比较清晰拉~去实现每一个小问题的 function 就可以了\u003c/li\u003e\n\u003c/ol\u003e\n\u003ch1\u003e验证\u003c/h1\u003e\n\u003cp\u003e\u003cimg src=\"./12/4.gif\" alt=\"sanjiao.gif\"\u003e\u003c/p\u003e\n\u003cp\u003e附上一个比较直观的画图方法\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e// 画图验证\nwindow.onload = function () {\n\tbtn.addEventListener('click', () =\u003e {\n\t\t// 获取area\n\t\tlet area = document.getElementById('area').value;\n\t\tlet id = document.getElementById('id').value;\n\t\ttri = [area, id];\n\t\tdraw();\n\t});\n\tcanvas.addEventListener('mousewheel', ({ deltaY }) =\u003e {\n\t\tif (deltaY \u0026#x3C; 0) {\n\t\t\tzoom = zoom + 2;\n\t\t} else {\n\t\t\tzoom = zoom - 2 \u0026#x3C; 0 ? 2 : zoom - 2;\n\t\t}\n\t\tdraw();\n\t});\n\tcanvas.addEventListener('mousedown', mouseDown);\n\tdraw();\n};\n\nfunction mouseDown() {\n\twindow.addEventListener('mousemove', mouseMove);\n\twindow.addEventListener('mouseup', mouseUp);\n}\n\nfunction mouseUp() {\n\twindow.removeEventListener('mousemove', mouseMove);\n\twindow.removeEventListener('mouseup', mouseUp);\n}\n\nfunction mouseMove({ movementX, movementY }) {\n\torigin[0] = origin[0] + movementX;\n\torigin[1] = origin[1] + movementY;\n\tdraw();\n}\n\nboard = []; // 棋盘\ntri = []; // 三角\n\nfor (let i = 1; i \u0026#x3C;= baseAreas; i++) {\n\tfor (let j = 1; j \u0026#x3C;= baseIds; j++) {\n\t\tboard.push(rotate(i, getVertex(j)));\n\t}\n}\n\nlet zoom = 30;\nconst origin = [0, 0];\n\nfunction draw() {\n\tdrawBoard();\n\tdrawTarget();\n}\n\nfunction drawBoard() {\n\t// 画棋盘\n\tconst { clientWidth: width, clientHeight: height } = canvas;\n\n\tlet oX = width / 2;\n\tlet oY = height / 2;\n\tconst ctx = canvas.getContext('2d');\n\tctx.fillStyle = '#fff';\n\tctx.fillRect(0, 0, width, height);\n\tctx.lineWidth = 1;\n\tctx.strokeStyle = '#000';\n\tconst [dx, dy] = origin;\n\tboard.forEach(([[x1, y1], [x2, y2], [x3, y3]]) =\u003e {\n\t\tctx.beginPath();\n\t\t// canvas y轴取反\n\t\ty1 = -y1;\n\t\ty2 = -y2;\n\t\ty3 = -y3;\n\t\tctx.moveTo(x1 * zoom + oX + dx, y1 * zoom + oY + dy);\n\t\tctx.lineTo(x2 * zoom + oX + dx, y2 * zoom + oY + dy);\n\t\tctx.lineTo(x3 * zoom + oX + dx, y3 * zoom + oY + dy);\n\t\tctx.closePath();\n\t\tctx.stroke();\n\t});\n}\n\nfunction drawTarget() {\n\tconst { clientWidth: width, clientHeight: height } = canvas;\n\n\tlet oX = width / 2;\n\tlet oY = height / 2;\n\tconst ctx = canvas.getContext('2d');\n\n\tconst [dx, dy] = origin;\n\tconst [area, id] = tri;\n\n\tif (area \u0026#x26;\u0026#x26; id) {\n\t\tlet [[x1, y1], [x2, y2], [x3, y3]] = rotate(area, getVertex(id));\n\t\tctx.lineWidth = 2;\n\t\tctx.strokeStyle = 'red';\n\t\tctx.beginPath();\n\t\t// canvas y轴取反\n\t\ty1 = -y1;\n\t\ty2 = -y2;\n\t\ty3 = -y3;\n\t\tctx.moveTo(x1 * zoom + oX + dx, y1 * zoom + oY + dy);\n\t\tctx.lineTo(x2 * zoom + oX + dx, y2 * zoom + oY + dy);\n\t\tctx.lineTo(x3 * zoom + oX + dx, y3 * zoom + oY + dy);\n\t\tctx.closePath();\n\t\tctx.stroke();\n\t}\n}\n\u003c/code\u003e\u003c/pre\u003e\n","title":"正六边形棋盘的思路","tags":["闲的","canvas"],"date":"2020-11-07","image":"/12/1.png","abstract":"这是一个正六边形的棋盘，里面的格子都是由正三角形组成的 棋子也是由正三角形组成的，棋子要落在棋盘上，就要知道棋子的位置 研究的问题是，怎么去描述棋子的位置 经过数学大神点播后，有了一点想法，分享一个思路"}},"__N_SSG":true},"page":"/posts/[id]","query":{"id":"12"},"buildId":"V73A7xuOJj_dCX4Sowzmy","assetPrefix":"/boboan.github.io","isFallback":false,"gsp":true}</script><script nomodule="" src="/boboan.github.io/_next/static/chunks/polyfills-8683bd742a84c1edd48c.js"></script><script src="/boboan.github.io/_next/static/chunks/webpack-1e2c3574589f9928e453.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/framework-30ca2fd61d3981f25bc6.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/commons-666c9ea77d97f6d5889d.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/main-49c7da928d6901734eef.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/620-c297bb4641d2e42f7ec2.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/pages/_app-4ea85989b9508dee6a70.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/506-6791c8fe1b38e799b0ee.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/555-5819a55def996b98014b.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/522-e45333ebcf36799b860c.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/257-d61dc7d0ca07f45c42bb.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/pages/posts/%5Bid%5D-eb1b0e8fcea1baf1d35c.js" async=""></script><script src="/boboan.github.io/_next/static/V73A7xuOJj_dCX4Sowzmy/_buildManifest.js" async=""></script><script src="/boboan.github.io/_next/static/V73A7xuOJj_dCX4Sowzmy/_ssgManifest.js" async=""></script></body></html>

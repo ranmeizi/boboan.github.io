@@ -1,0 +1,114 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width"/><meta charSet="utf-8"/><title>[screeps]room孵化队列的设计</title><link rel="stylesheet" href="/boboan.github.io/prism/prism.css"/><script src="/boboan.github.io/prism/prism.js"></script><meta name="next-head-count" content="5"/><link rel="preload" href="/boboan.github.io/_next/static/css/ea031c1d2bc84f99b82c.css" as="style"/><link rel="stylesheet" href="/boboan.github.io/_next/static/css/ea031c1d2bc84f99b82c.css" data-n-g=""/><link rel="preload" href="/boboan.github.io/_next/static/css/57d17aee5b6a8e2e889f.css" as="style"/><link rel="stylesheet" href="/boboan.github.io/_next/static/css/57d17aee5b6a8e2e889f.css" data-n-p=""/><noscript data-n-css=""></noscript><link rel="preload" href="/boboan.github.io/_next/static/chunks/webpack-1e2c3574589f9928e453.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/framework-30ca2fd61d3981f25bc6.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/commons-666c9ea77d97f6d5889d.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/main-49c7da928d6901734eef.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/620-c297bb4641d2e42f7ec2.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/pages/_app-4ea85989b9508dee6a70.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/506-6791c8fe1b38e799b0ee.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/555-5819a55def996b98014b.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/522-e45333ebcf36799b860c.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/257-d61dc7d0ca07f45c42bb.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/pages/posts/%5Bid%5D-eb1b0e8fcea1baf1d35c.js" as="script"/></head><body><div id="__next"><div id="cd" class="jss1" style="background:#fff;height:100vh;width:100vw;left:0;top:0;position:fixed;opacity:1;z-index:999;transition:0.5s"></div><div><header class="jss36"><div class="jss41"><header class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorDefault MuiPaper-elevation4"><div class="MuiContainer-root jss54 MuiContainer-disableGutters MuiContainer-maxWidthLg"><div class="jss55 "><div class="MuiToolbar-root MuiToolbar-dense"><button class="MuiButtonBase-root MuiIconButton-root jss43 jss42 MuiIconButton-colorInherit MuiIconButton-edgeStart" tabindex="0" type="button" aria-label="open drawer"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg></span></button><h6 class="MuiTypography-root jss44 MuiTypography-h6 MuiTypography-noWrap"><a href="/boboan.github.io"><span class="jss58 logo"><span class="jss59 left">&lt; </span>Boboan<span class="jss59 right"> &gt;</span></span></a></h6><div class="jss45"><div class="MuiTabs-root"><div class="MuiTabs-scroller MuiTabs-fixed" style="overflow:hidden"><div aria-label="simple tabs example" class="MuiTabs-flexContainer" role="tablist"><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">标签</span></button><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">归档</span></button><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">关于</span></button><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">Screeps</span></button></div></div></div></div><div class="jss46"><div class="jss47"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div><div class="MuiInputBase-root jss48"><input type="text" placeholder="站内搜索" aria-label="search" class="MuiInputBase-input jss49"/></div></div><button class="MuiButtonBase-root MuiIconButton-root jss50 MuiIconButton-colorInherit MuiIconButton-edgeStart" tabindex="0" type="button" aria-label="open drawer"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"></path></svg></span></button></div></div><h3 class="jss56 "> <!-- -->[screeps]room孵化队列的设计<!-- --> </h3><div role="presentation" class="jss60" style="transform:scale(0);visibility:hidden"><button class="MuiButtonBase-root MuiIconButton-root jss57 MuiIconButton-colorInherit MuiIconButton-edgeStart" tabindex="0" type="button" aria-label="open drawer"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg></span></button></div></div></header></div></header><div id="back-to-top-anchor"></div><main class="jss37"><div class="MuiContainer-root jss38 MuiContainer-disableGutters MuiContainer-maxWidthLg"><div class="jss39" style="width:0px;display:none"><div class="jss61"><div class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"><button class="MuiButtonBase-root MuiCardActionArea-root" tabindex="0" type="button"><div class="MuiCardMedia-root jss62 " style="background-image:url(&quot;/boboan.github.io/images/back1.jpg&quot;)" title="Contemplative Reptile"></div><div class="jss65 "></div><div class="MuiCardContent-root"><h2 class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom">Boboan</h2><p class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary">boboan.hand.touch(fish)</p></div><span class="MuiCardActionArea-focusHighlight"></span></button><div class="MuiCardActions-root MuiCardActions-spacing"><button class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall" tabindex="0" type="button"><span class="MuiButton-label">摸鱼</span></button><button class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall" tabindex="0" type="button"><span class="MuiButton-label">一会再摸</span></button></div></div><div class="jss66"><div class="MuiPaper-root MuiPaper-elevation4 MuiPaper-rounded"><nav class="MuiList-root jss67 MuiList-padding" aria-label="main mailbox folders"><a class="jss68" target="_blank" href="https://github.com/ranmeizi"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Github</span></div><img class="jss69" src="/boboan.github.io/images/github-icon.jpg"/></div></a><hr class="MuiDivider-root"/><a class="jss68" target="_blank" href="https://gitee.com/boboanzuiniubi"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Gitee</span></div><img class="jss69" src="/boboan.github.io/images/gitee-icon.jpg"/></div></a><hr class="MuiDivider-root"/><a class="jss68" target="_blank" href="https://www.jianshu.com/u/fc0db81874d5"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">简书</span></div><img class="jss69" src="/boboan.github.io/images/jianshu-icon.jpg"/></div></a></nav></div></div></div></div><div class="MuiPaper-root jss40 MuiPaper-elevation1 MuiPaper-rounded"><article><h1 class="utils_headingXl__1XecN" id="titleH1">[screeps]room孵化队列的设计</h1><div class="utils_lightText__12Ckm"><time dateTime="2021-02-28">February 28, 2021</time></div><div class="note-view"><p>在房间Coltroller等级达到7级和8级的时候，每个房间将解锁第二个/第三个Spawn，这时候就要考虑代码怎么能<strong>多兵营(spawn)</strong>同时造兵，而不是让spawn成为一个巨大的Extension</p>
+<p><img src="./16/1.png" alt="image.png"></p>
+<h1>孵化任务列表</h1>
+<p>设想有一个孵化任务列表，来让spawn们自己来认领自己的孵化任务，当spawn可以孵化时，那我就领下这个任务。当spawn正在孵化时，那就不领。
+现在要考虑的问题就是:</p>
+<ol>
+<li>生成孵化任务列表</li>
+<li>spawn认领任务</li>
+</ol>
+<h2>生成孵化任务列表</h2>
+<p>在教程中，教给我们的是，使用数量来判断是否需要孵化更多的role，我也没有研究出更好的方法，也是用数量判断。
+设定一个limit值表示房间内规划的数量，例如<code>limit = 2</code>,那当我在房间内数creep数小于limit值时，就要向孵化列表中push孵化任务了。
+接下来的问题时那这个房间内数量的值，怎么获取呢？
+使用memory存储，在孵化creep时除了<code>role</code>还定义了1个额外的值<code>room</code> 来标识这个creep出生的房间。
+循环<code>Game.creeps</code>时,就能从memory中获得各个room中的role数量了
+但这样还不够，有可能出现这种情况无法完成全部孵化任务
+1.energy不够，spawn无法完成孵化任务
+2.spawn在孵化中无法完成孵化任务
+那在本tick结束后，队列中的指标还是没有完成，下一tick就会继续push孵化任务。
+所以在计算数量的时候，还要算上queue中预孵化的这一部分creep</p>
+<h2>spawn认领任务</h2>
+<p>在创建好孵化任务列表后，认领任务就简单多了，只要循环<code>Game.spawns</code>判断spawnCreep的返回值，如果成功，那就删除第一个任务就好了。
+有一点要注意的是，教程里为creep命名时，用的时Game.time，但实际上，有可能是同一tick时多个spawn一起孵化，而creep的名字不能重复，就要给creep一个绝对不能重复的名字。
+我翻了下lodash文档，还真有<code>_.uniqueId([prefix=''])</code>
+<img src="./16/2.png" alt="多兵营出兵"></p>
+<p>这样设计，spawn孵化资源就能利用上了，附几个代码参考</p>
+<ul>
+<li>数量检测Env.js</li>
+</ul>
+<pre><code class="language-javascript">module.exports = function () {
+  // 清除死去creep的memory
+  const creepsName = Object.keys(Game.creeps)
+  Object.keys(Memory.creeps).forEach(name => {
+    if (!creepsName.includes(name)) {
+      delete Memory.creeps[name]
+    }
+  })
+  // 统计每个房间creeps数
+  global.roomCreeps = {}
+  Object.values(Game.creeps).forEach(creep => {
+    const { room, role } = creep.memory
+    if (!global.roomCreeps[room]) {
+      global.roomCreeps[room] = {
+        [role]: 1
+      }
+    } else if (!global.roomCreeps[room][role]) {
+      global.roomCreeps[room][role] = 1
+    } else {
+      global.roomCreeps[room][role]++
+    }
+  })
+}
+</code></pre>
+<ul>
+<li>room控制器</li>
+</ul>
+<pre><code class="language-javascript">module.exports = function (room) {
+  roomSpawnCreeps(room)
+}
+
+/**
+ * 检查creep数量 room数+queue数
+ */
+function roomSpawnCreeps(room) {
+  const { harvester = 0 } = global.roomCreeps[room.name] || {}
+  const queue = room.memory.queue || []
+  const queueNum = {}
+
+  queue.forEach(role => {
+    queueNum[role]
+      ? queueNum[role]++
+      : queueNum[role] = 1
+  })
+
+  if (harvester + (queueNum['harvester'] || 0) &#x3C; 2) {
+    queue.push('harvester')
+  }
+  room.memory.queue = queue
+}
+</code></pre>
+<ul>
+<li>spawn控制器</li>
+</ul>
+<pre><code class="language-javascript">module.exports = function (spawn) {
+  getSpawnFromQueue(spawn)
+}
+
+// 从队列种选取孵化任务，领取后，shift掉
+function getSpawnFromQueue(spawn) {
+  const queue = spawn.room.memory.queue
+  // 是否可以孵化？
+  if (queue.length > 0 &#x26;&#x26; !spawn.spawning) {
+    const role = queue[0] // 孵化队列第一位
+    const bodys = getBodys(role)
+    const result = bodys &#x26;&#x26; spawn.spawnCreep(bodys, _.uniqueId('harvester_'), {
+      memory: {
+        role: 'harvester',
+        room: spawn.room.name
+      }
+    })
+    if (result === OK) {
+      queue.shift()
+      spawn.room.memory.queue = queue
+    }
+  }
+}
+
+function getBodys(role) {
+  if (role === 'harvester') {
+    return [WORK, MOVE, CARRY]
+  }
+}
+</code></pre>
+</div></article></div></div></main></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"postData":{"id":"16","contentHtml":"\u003cp\u003e在房间Coltroller等级达到7级和8级的时候，每个房间将解锁第二个/第三个Spawn，这时候就要考虑代码怎么能\u003cstrong\u003e多兵营(spawn)\u003c/strong\u003e同时造兵，而不是让spawn成为一个巨大的Extension\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"./16/1.png\" alt=\"image.png\"\u003e\u003c/p\u003e\n\u003ch1\u003e孵化任务列表\u003c/h1\u003e\n\u003cp\u003e设想有一个孵化任务列表，来让spawn们自己来认领自己的孵化任务，当spawn可以孵化时，那我就领下这个任务。当spawn正在孵化时，那就不领。\n现在要考虑的问题就是:\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003e生成孵化任务列表\u003c/li\u003e\n\u003cli\u003espawn认领任务\u003c/li\u003e\n\u003c/ol\u003e\n\u003ch2\u003e生成孵化任务列表\u003c/h2\u003e\n\u003cp\u003e在教程中，教给我们的是，使用数量来判断是否需要孵化更多的role，我也没有研究出更好的方法，也是用数量判断。\n设定一个limit值表示房间内规划的数量，例如\u003ccode\u003elimit = 2\u003c/code\u003e,那当我在房间内数creep数小于limit值时，就要向孵化列表中push孵化任务了。\n接下来的问题时那这个房间内数量的值，怎么获取呢？\n使用memory存储，在孵化creep时除了\u003ccode\u003erole\u003c/code\u003e还定义了1个额外的值\u003ccode\u003eroom\u003c/code\u003e 来标识这个creep出生的房间。\n循环\u003ccode\u003eGame.creeps\u003c/code\u003e时,就能从memory中获得各个room中的role数量了\n但这样还不够，有可能出现这种情况无法完成全部孵化任务\n1.energy不够，spawn无法完成孵化任务\n2.spawn在孵化中无法完成孵化任务\n那在本tick结束后，队列中的指标还是没有完成，下一tick就会继续push孵化任务。\n所以在计算数量的时候，还要算上queue中预孵化的这一部分creep\u003c/p\u003e\n\u003ch2\u003espawn认领任务\u003c/h2\u003e\n\u003cp\u003e在创建好孵化任务列表后，认领任务就简单多了，只要循环\u003ccode\u003eGame.spawns\u003c/code\u003e判断spawnCreep的返回值，如果成功，那就删除第一个任务就好了。\n有一点要注意的是，教程里为creep命名时，用的时Game.time，但实际上，有可能是同一tick时多个spawn一起孵化，而creep的名字不能重复，就要给creep一个绝对不能重复的名字。\n我翻了下lodash文档，还真有\u003ccode\u003e_.uniqueId([prefix=''])\u003c/code\u003e\n\u003cimg src=\"./16/2.png\" alt=\"多兵营出兵\"\u003e\u003c/p\u003e\n\u003cp\u003e这样设计，spawn孵化资源就能利用上了，附几个代码参考\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e数量检测Env.js\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003emodule.exports = function () {\n  // 清除死去creep的memory\n  const creepsName = Object.keys(Game.creeps)\n  Object.keys(Memory.creeps).forEach(name =\u003e {\n    if (!creepsName.includes(name)) {\n      delete Memory.creeps[name]\n    }\n  })\n  // 统计每个房间creeps数\n  global.roomCreeps = {}\n  Object.values(Game.creeps).forEach(creep =\u003e {\n    const { room, role } = creep.memory\n    if (!global.roomCreeps[room]) {\n      global.roomCreeps[room] = {\n        [role]: 1\n      }\n    } else if (!global.roomCreeps[room][role]) {\n      global.roomCreeps[room][role] = 1\n    } else {\n      global.roomCreeps[room][role]++\n    }\n  })\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cul\u003e\n\u003cli\u003eroom控制器\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003emodule.exports = function (room) {\n  roomSpawnCreeps(room)\n}\n\n/**\n * 检查creep数量 room数+queue数\n */\nfunction roomSpawnCreeps(room) {\n  const { harvester = 0 } = global.roomCreeps[room.name] || {}\n  const queue = room.memory.queue || []\n  const queueNum = {}\n\n  queue.forEach(role =\u003e {\n    queueNum[role]\n      ? queueNum[role]++\n      : queueNum[role] = 1\n  })\n\n  if (harvester + (queueNum['harvester'] || 0) \u0026#x3C; 2) {\n    queue.push('harvester')\n  }\n  room.memory.queue = queue\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cul\u003e\n\u003cli\u003espawn控制器\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003emodule.exports = function (spawn) {\n  getSpawnFromQueue(spawn)\n}\n\n// 从队列种选取孵化任务，领取后，shift掉\nfunction getSpawnFromQueue(spawn) {\n  const queue = spawn.room.memory.queue\n  // 是否可以孵化？\n  if (queue.length \u003e 0 \u0026#x26;\u0026#x26; !spawn.spawning) {\n    const role = queue[0] // 孵化队列第一位\n    const bodys = getBodys(role)\n    const result = bodys \u0026#x26;\u0026#x26; spawn.spawnCreep(bodys, _.uniqueId('harvester_'), {\n      memory: {\n        role: 'harvester',\n        room: spawn.room.name\n      }\n    })\n    if (result === OK) {\n      queue.shift()\n      spawn.room.memory.queue = queue\n    }\n  }\n}\n\nfunction getBodys(role) {\n  if (role === 'harvester') {\n    return [WORK, MOVE, CARRY]\n  }\n}\n\u003c/code\u003e\u003c/pre\u003e\n","title":"[screeps]room孵化队列的设计","tags":["screeps"],"date":"2021-02-28","image":"/16/1.png","abstract":"在房间Coltroller等级达到7级和8级的时候，每个房间将解锁第二个/第三个Spawn，这时候就要考虑代码怎么能**多兵营(spawn)**同时造兵，而不是让spawn成为一个巨大的Extension"}},"__N_SSG":true},"page":"/posts/[id]","query":{"id":"16"},"buildId":"V73A7xuOJj_dCX4Sowzmy","assetPrefix":"/boboan.github.io","isFallback":false,"gsp":true}</script><script nomodule="" src="/boboan.github.io/_next/static/chunks/polyfills-8683bd742a84c1edd48c.js"></script><script src="/boboan.github.io/_next/static/chunks/webpack-1e2c3574589f9928e453.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/framework-30ca2fd61d3981f25bc6.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/commons-666c9ea77d97f6d5889d.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/main-49c7da928d6901734eef.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/620-c297bb4641d2e42f7ec2.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/pages/_app-4ea85989b9508dee6a70.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/506-6791c8fe1b38e799b0ee.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/555-5819a55def996b98014b.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/522-e45333ebcf36799b860c.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/257-d61dc7d0ca07f45c42bb.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/pages/posts/%5Bid%5D-eb1b0e8fcea1baf1d35c.js" async=""></script><script src="/boboan.github.io/_next/static/V73A7xuOJj_dCX4Sowzmy/_buildManifest.js" async=""></script><script src="/boboan.github.io/_next/static/V73A7xuOJj_dCX4Sowzmy/_ssgManifest.js" async=""></script></body></html>

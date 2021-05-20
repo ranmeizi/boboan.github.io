@@ -1,0 +1,200 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width"/><meta charSet="utf-8"/><title>[hooks学习笔记]怎么使用hooks达到逻辑的复用</title><link rel="stylesheet" href="/boboan.github.io/prism/prism.css"/><script src="/boboan.github.io/prism/prism.js"></script><meta name="next-head-count" content="5"/><link rel="preload" href="/boboan.github.io/_next/static/css/ea031c1d2bc84f99b82c.css" as="style"/><link rel="stylesheet" href="/boboan.github.io/_next/static/css/ea031c1d2bc84f99b82c.css" data-n-g=""/><link rel="preload" href="/boboan.github.io/_next/static/css/57d17aee5b6a8e2e889f.css" as="style"/><link rel="stylesheet" href="/boboan.github.io/_next/static/css/57d17aee5b6a8e2e889f.css" data-n-p=""/><noscript data-n-css=""></noscript><link rel="preload" href="/boboan.github.io/_next/static/chunks/webpack-1e2c3574589f9928e453.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/framework-30ca2fd61d3981f25bc6.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/commons-666c9ea77d97f6d5889d.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/main-49c7da928d6901734eef.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/620-c297bb4641d2e42f7ec2.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/pages/_app-4ea85989b9508dee6a70.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/506-6791c8fe1b38e799b0ee.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/555-5819a55def996b98014b.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/522-e45333ebcf36799b860c.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/257-d61dc7d0ca07f45c42bb.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/pages/posts/%5Bid%5D-eb1b0e8fcea1baf1d35c.js" as="script"/></head><body><div id="__next"><div id="cd" class="jss1" style="background:#fff;height:100vh;width:100vw;left:0;top:0;position:fixed;opacity:1;z-index:999;transition:0.5s"></div><div><header class="jss138"><div class="jss143"><header class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorDefault MuiPaper-elevation4"><div class="MuiContainer-root jss156 MuiContainer-disableGutters MuiContainer-maxWidthLg"><div class="jss157 "><div class="MuiToolbar-root MuiToolbar-dense"><button class="MuiButtonBase-root MuiIconButton-root jss145 jss144 MuiIconButton-colorInherit MuiIconButton-edgeStart" tabindex="0" type="button" aria-label="open drawer"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg></span></button><h6 class="MuiTypography-root jss146 MuiTypography-h6 MuiTypography-noWrap"><a href="/boboan.github.io"><span class="jss160 logo"><span class="jss161 left">&lt; </span>Boboan<span class="jss161 right"> &gt;</span></span></a></h6><div class="jss147"><div class="MuiTabs-root"><div class="MuiTabs-scroller MuiTabs-fixed" style="overflow:hidden"><div aria-label="simple tabs example" class="MuiTabs-flexContainer" role="tablist"><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">标签</span></button><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">归档</span></button><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">关于</span></button><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">Screeps</span></button></div></div></div></div><div class="jss148"><div class="jss149"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div><div class="MuiInputBase-root jss150"><input type="text" placeholder="站内搜索" aria-label="search" class="MuiInputBase-input jss151"/></div></div><button class="MuiButtonBase-root MuiIconButton-root jss152 MuiIconButton-colorInherit MuiIconButton-edgeStart" tabindex="0" type="button" aria-label="open drawer"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"></path></svg></span></button></div></div><h3 class="jss158 "> <!-- -->[hooks学习笔记]怎么使用hooks达到逻辑的复用<!-- --> </h3><div role="presentation" class="jss162" style="transform:scale(0);visibility:hidden"><button class="MuiButtonBase-root MuiIconButton-root jss159 MuiIconButton-colorInherit MuiIconButton-edgeStart" tabindex="0" type="button" aria-label="open drawer"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg></span></button></div></div></header></div></header><div id="back-to-top-anchor"></div><main class="jss139"><div class="MuiContainer-root jss140 MuiContainer-disableGutters MuiContainer-maxWidthLg"><div class="jss141" style="width:0px;display:none"><div class="jss163"><div class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"><button class="MuiButtonBase-root MuiCardActionArea-root" tabindex="0" type="button"><div class="MuiCardMedia-root jss164 " style="background-image:url(&quot;/boboan.github.io/images/back1.jpg&quot;)" title="Contemplative Reptile"></div><div class="jss167 "></div><div class="MuiCardContent-root"><h2 class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom">Boboan</h2><p class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary">boboan.hand.touch(fish)</p></div><span class="MuiCardActionArea-focusHighlight"></span></button><div class="MuiCardActions-root MuiCardActions-spacing"><button class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall" tabindex="0" type="button"><span class="MuiButton-label">摸鱼</span></button><button class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall" tabindex="0" type="button"><span class="MuiButton-label">一会再摸</span></button></div></div><div class="jss168"><div class="MuiPaper-root MuiPaper-elevation4 MuiPaper-rounded"><nav class="MuiList-root jss169 MuiList-padding" aria-label="main mailbox folders"><a class="jss170" target="_blank" href="https://github.com/ranmeizi"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Github</span></div><img class="jss171" src="/boboan.github.io/images/github-icon.jpg"/></div></a><hr class="MuiDivider-root"/><a class="jss170" target="_blank" href="https://gitee.com/boboanzuiniubi"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Gitee</span></div><img class="jss171" src="/boboan.github.io/images/gitee-icon.jpg"/></div></a><hr class="MuiDivider-root"/><a class="jss170" target="_blank" href="https://www.jianshu.com/u/fc0db81874d5"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">简书</span></div><img class="jss171" src="/boboan.github.io/images/jianshu-icon.jpg"/></div></a></nav></div></div></div></div><div class="MuiPaper-root jss142 MuiPaper-elevation1 MuiPaper-rounded"><article><h1 class="utils_headingXl__1XecN" id="titleH1">[hooks学习笔记]怎么使用hooks达到逻辑的复用</h1><div class="utils_lightText__12Ckm"><time dateTime="2020-07-03">July 3, 2020</time></div><div class="note-view"><p>之前写 class 组件时，一些功能模块的一些 state/function，很难复用。
+试过 create-react-class，把 state/function 按功能分小块一起拼装成一个 class，但是看起来还是不太舒服
+react16.8 出了 hooks 之后，开始学习 hooks，感觉这样写的话会清晰一些，用例子带大家感受一下。
+例子放在 github 上:<a href="https://github.com/ranmeizi/hooks-example">https://github.com/ranmeizi/hooks-example</a></p>
+<h1>小例子</h1>
+<p>写了 3 个 canvas 页面，对应了几个功能交叉的需求，是可以复用的</p>
+<ol>
+<li>画图
+<img src="./6/1.gif" alt="1.gif"></li>
+<li>画鼠标
+<img src="./6/2.gif" alt="2.gif"></li>
+<li>点击画图
+<img src="./6/3.gif" alt="3.gif"></li>
+</ol>
+<h1>从需求出发</h1>
+<p>分析一下这三个需求：</p>
+<ol>
+<li>这个需求是把图片绘制到 canvas 上，这是需求 1，2，3 都有的</li>
+<li>这个需求是鼠标移动时，在对应位置绘制鼠标的图片，绘制逻辑可以复用 1 的</li>
+<li>这个需求复用就更多了，① 鼠标移动的时候绘制指针，② 点击图片的时候更改指针，③ 点击 canvas 的时候绘制图片。① 完全是需求 2 已经实现了的，② 写一个 click 事件修改鼠标移动的 IMG 就可以完成，③ 写一个 click 事件用需求 1 画下图就可以了</li>
+</ol>
+<h1>用 hooks 实现</h1>
+<p>我学习的时候直接看的 react 的文档。链接：<a href="https://zh-hans.reactjs.org/docs/hooks-intro.html">https://zh-hans.reactjs.org/docs/hooks-intro.html</a>
+用到的是自定义 hooks，先抽出这个功能自己的状态和行为，写到自定义 hooks 里，然后可以暴露出一些接口出去，每个 hooks 是一个 function，可以 export 出去，别的组件使用的时候 import 要用的 hooks，就可以把逻辑拼装起来。</p>
+<ul>
+<li>自定义 hooks
+我写了 2 个自定义 hooks，分别对应画图和鼠标移动
+而且可以看到，useMouseImg 这个 hooks 里也是引用了 useDrawImg 的，hooks 里也是可以继续套 hooks 的</li>
+</ul>
+<pre><code class="language-js">import { useState, useEffect, useRef } from 'react';
+// 画图
+export function useDrawImg(canvas) {
+	function drawImage(x, y, img) {
+		const ctx = canvas.current.getContext('2d');
+		ctx.drawImage(img, x, y, img.width, img.height);
+	}
+	function clear() {
+		const { height, width } = canvas.current;
+		const ctx = canvas.current.getContext('2d');
+		ctx.clearRect(0, 0, width, height);
+	}
+	return {
+		drawImage,
+		clear,
+	};
+}
+// 鼠标移动
+export function useMouseImg(canvas) {
+	const img = useRef(null);
+	const { drawImage, clear } = useDrawImg(canvas);
+	useEffect(() => {
+		console.log(111);
+		const el = canvas.current;
+		el.addEventListener('mousemove', move);
+		return () => {
+			el.removeEventListener('mousemove', move);
+		};
+	}, []);
+
+	function move(e) {
+		const { offsetX: x, offsetY: y } = e;
+		clear();
+		drawImage(x, y, img.current);
+	}
+	function setImg(image) {
+		img.current = image;
+	}
+	return [img, setImg];
+}
+</code></pre>
+<ul>
+<li>组装 hooks
+Page1 使用 hooks 暴露出的 drawImage API 画图就可以了，clear 可以清除画布，没啥可组装的</li>
+</ul>
+<pre><code class="language-js">import React, { useEffect, useRef } from 'react';
+import { useDrawImg } from '../hooks/draw';
+import lbxx from '../../assets/lbxx.png';
+
+export default function () {
+	const canvas = useRef(null);
+	const { drawImage, clear } = useDrawImg(canvas);
+	useEffect(() => {
+		draw();
+	}, []);
+	function draw() {
+		let img = new Image();
+		img.src = lbxx;
+		img.onload = () => drawImage(100, 100, img);
+	}
+	return (
+		&#x3C;div style={{ position: 'relative' }}>
+			&#x3C;canvas
+				style={{ position: 'absolute', top: 0, left: 0, border: '1px solid red' }}
+				ref={canvas}
+				height="500"
+				width="500"
+			/>
+			{/* 按钮组 */}
+			&#x3C;div style={{ position: 'absolute', left: '400px', top: '20px' }}>
+				&#x3C;button onClick={draw}>画图&#x3C;/button>
+				&#x3C;button onClick={clear}>清除&#x3C;/button>
+			&#x3C;/div>
+		&#x3C;/div>
+	);
+}
+</code></pre>
+<p>Page2 更简单了，完全让 hooks 自己实现，只是在渲染后给 hooks 传了一个鼠标指针的图片</p>
+<pre><code class="language-js">import React, { useEffect, useRef } from 'react';
+import { useDrawImg, useMouseImg } from '../hooks/draw';
+import lbxx from '../../assets/mouse.png';
+let img = new Image();
+img.src = lbxx;
+export default function () {
+	const canvas = useRef(null);
+	const [cursor, setImg] = useMouseImg(canvas);
+	useEffect(() => {
+		setImg(img);
+	}, []);
+	return (
+		&#x3C;div style={{ position: 'relative' }}>
+			&#x3C;canvas
+				style={{ position: 'absolute', top: 0, left: 0, border: '1px solid red', cursor: 'none' }}
+				ref={canvas}
+				height="500"
+				width="500"
+			/>
+		&#x3C;/div>
+	);
+}
+</code></pre>
+<p>Page3 这块是组装 hooks 的部分了，Page3 的需求用到了很多 1，2 里面都有的逻辑
+不过道理还是一样，是我在需求中说的，使用了 2 个 click 事件，去调用 hooks 中的 api</p>
+<pre><code class="language-js">import React, { useRef, useEffect } from 'react';
+import { useDrawImg, useMouseImg } from '../hooks/draw';
+import lbxx from '../../assets/mouse.png';
+import fcskdrt from '../../assets/fcskdrt.jpg';
+import nai200 from '../../assets/nai200.jpg';
+import qi60 from '../../assets/qi60.jpg';
+import kzp from '../../assets/kzp.jpg';
+import wlssdmg from '../../assets/wlssdmg.jpg';
+let img = new Image();
+img.src = lbxx;
+export default function () {
+	const canvas = useRef(null);
+	const canvasCursor = useRef(null);
+	const { drawImage, clear } = useDrawImg(canvas);
+	const [cursor, setImg] = useMouseImg(canvasCursor);
+	useEffect(() => {
+		setImg(img);
+		// 绑定事件
+		canvasCursor.current.addEventListener('click', onCanvasClick);
+	}, []);
+	function onCanvasClick(e) {
+		const { offsetX: x, offsetY: y } = e;
+		// 画画
+		if (cursor.current !== img) {
+			console.log(x, y, cursor.current);
+			drawImage(x, y, cursor.current);
+		}
+		// 改变光标
+		setImg(img);
+	}
+	function changeImg(e) {
+		setImg(e.target);
+	}
+	return (
+		&#x3C;div style={{ position: 'relative' }}>
+			&#x3C;canvas
+				style={{ position: 'absolute', top: 0, left: 0, border: '1px solid red', cursor: 'none' }}
+				ref={canvas}
+				height="500"
+				width="500"
+			/>
+			&#x3C;canvas
+				style={{ position: 'absolute', top: 0, left: 0, border: '1px solid red', cursor: 'none' }}
+				ref={canvasCursor}
+				height="500"
+				width="500"
+			/>
+			&#x3C;div
+				style={{
+					display: 'flex',
+					flexDirection: 'column',
+					alignItems: 'center',
+					position: 'absolute',
+					left: '500px',
+				}}
+			>
+				&#x3C;img onClick={changeImg} src={fcskdrt} alt="" />
+				&#x3C;img onClick={changeImg} src={nai200} alt="" />
+				&#x3C;img onClick={changeImg} src={qi60} alt="" />
+				&#x3C;img onClick={changeImg} src={kzp} alt="" />
+				&#x3C;img onClick={changeImg} src={wlssdmg} alt="" />
+			&#x3C;/div>
+		&#x3C;/div>
+	);
+}
+</code></pre>
+<p>可以看到我 Page3 中没有写任何画图的 function，也没有监听鼠标移动，全是用之前写好的 hooks 实现的，这样就达到了逻辑复用，在我们开发中也可以把明显可复用的逻辑抽到 hooks 中写，节省自己的时间，代码也变得好维护。</p>
+</div></article></div></div></main></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"postData":{"id":"6","contentHtml":"\u003cp\u003e之前写 class 组件时，一些功能模块的一些 state/function，很难复用。\n试过 create-react-class，把 state/function 按功能分小块一起拼装成一个 class，但是看起来还是不太舒服\nreact16.8 出了 hooks 之后，开始学习 hooks，感觉这样写的话会清晰一些，用例子带大家感受一下。\n例子放在 github 上:\u003ca href=\"https://github.com/ranmeizi/hooks-example\"\u003ehttps://github.com/ranmeizi/hooks-example\u003c/a\u003e\u003c/p\u003e\n\u003ch1\u003e小例子\u003c/h1\u003e\n\u003cp\u003e写了 3 个 canvas 页面，对应了几个功能交叉的需求，是可以复用的\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003e画图\n\u003cimg src=\"./6/1.gif\" alt=\"1.gif\"\u003e\u003c/li\u003e\n\u003cli\u003e画鼠标\n\u003cimg src=\"./6/2.gif\" alt=\"2.gif\"\u003e\u003c/li\u003e\n\u003cli\u003e点击画图\n\u003cimg src=\"./6/3.gif\" alt=\"3.gif\"\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003ch1\u003e从需求出发\u003c/h1\u003e\n\u003cp\u003e分析一下这三个需求：\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003e这个需求是把图片绘制到 canvas 上，这是需求 1，2，3 都有的\u003c/li\u003e\n\u003cli\u003e这个需求是鼠标移动时，在对应位置绘制鼠标的图片，绘制逻辑可以复用 1 的\u003c/li\u003e\n\u003cli\u003e这个需求复用就更多了，① 鼠标移动的时候绘制指针，② 点击图片的时候更改指针，③ 点击 canvas 的时候绘制图片。① 完全是需求 2 已经实现了的，② 写一个 click 事件修改鼠标移动的 IMG 就可以完成，③ 写一个 click 事件用需求 1 画下图就可以了\u003c/li\u003e\n\u003c/ol\u003e\n\u003ch1\u003e用 hooks 实现\u003c/h1\u003e\n\u003cp\u003e我学习的时候直接看的 react 的文档。链接：\u003ca href=\"https://zh-hans.reactjs.org/docs/hooks-intro.html\"\u003ehttps://zh-hans.reactjs.org/docs/hooks-intro.html\u003c/a\u003e\n用到的是自定义 hooks，先抽出这个功能自己的状态和行为，写到自定义 hooks 里，然后可以暴露出一些接口出去，每个 hooks 是一个 function，可以 export 出去，别的组件使用的时候 import 要用的 hooks，就可以把逻辑拼装起来。\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e自定义 hooks\n我写了 2 个自定义 hooks，分别对应画图和鼠标移动\n而且可以看到，useMouseImg 这个 hooks 里也是引用了 useDrawImg 的，hooks 里也是可以继续套 hooks 的\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class=\"language-js\"\u003eimport { useState, useEffect, useRef } from 'react';\n// 画图\nexport function useDrawImg(canvas) {\n\tfunction drawImage(x, y, img) {\n\t\tconst ctx = canvas.current.getContext('2d');\n\t\tctx.drawImage(img, x, y, img.width, img.height);\n\t}\n\tfunction clear() {\n\t\tconst { height, width } = canvas.current;\n\t\tconst ctx = canvas.current.getContext('2d');\n\t\tctx.clearRect(0, 0, width, height);\n\t}\n\treturn {\n\t\tdrawImage,\n\t\tclear,\n\t};\n}\n// 鼠标移动\nexport function useMouseImg(canvas) {\n\tconst img = useRef(null);\n\tconst { drawImage, clear } = useDrawImg(canvas);\n\tuseEffect(() =\u003e {\n\t\tconsole.log(111);\n\t\tconst el = canvas.current;\n\t\tel.addEventListener('mousemove', move);\n\t\treturn () =\u003e {\n\t\t\tel.removeEventListener('mousemove', move);\n\t\t};\n\t}, []);\n\n\tfunction move(e) {\n\t\tconst { offsetX: x, offsetY: y } = e;\n\t\tclear();\n\t\tdrawImage(x, y, img.current);\n\t}\n\tfunction setImg(image) {\n\t\timg.current = image;\n\t}\n\treturn [img, setImg];\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cul\u003e\n\u003cli\u003e组装 hooks\nPage1 使用 hooks 暴露出的 drawImage API 画图就可以了，clear 可以清除画布，没啥可组装的\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class=\"language-js\"\u003eimport React, { useEffect, useRef } from 'react';\nimport { useDrawImg } from '../hooks/draw';\nimport lbxx from '../../assets/lbxx.png';\n\nexport default function () {\n\tconst canvas = useRef(null);\n\tconst { drawImage, clear } = useDrawImg(canvas);\n\tuseEffect(() =\u003e {\n\t\tdraw();\n\t}, []);\n\tfunction draw() {\n\t\tlet img = new Image();\n\t\timg.src = lbxx;\n\t\timg.onload = () =\u003e drawImage(100, 100, img);\n\t}\n\treturn (\n\t\t\u0026#x3C;div style={{ position: 'relative' }}\u003e\n\t\t\t\u0026#x3C;canvas\n\t\t\t\tstyle={{ position: 'absolute', top: 0, left: 0, border: '1px solid red' }}\n\t\t\t\tref={canvas}\n\t\t\t\theight=\"500\"\n\t\t\t\twidth=\"500\"\n\t\t\t/\u003e\n\t\t\t{/* 按钮组 */}\n\t\t\t\u0026#x3C;div style={{ position: 'absolute', left: '400px', top: '20px' }}\u003e\n\t\t\t\t\u0026#x3C;button onClick={draw}\u003e画图\u0026#x3C;/button\u003e\n\t\t\t\t\u0026#x3C;button onClick={clear}\u003e清除\u0026#x3C;/button\u003e\n\t\t\t\u0026#x3C;/div\u003e\n\t\t\u0026#x3C;/div\u003e\n\t);\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003ePage2 更简单了，完全让 hooks 自己实现，只是在渲染后给 hooks 传了一个鼠标指针的图片\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-js\"\u003eimport React, { useEffect, useRef } from 'react';\nimport { useDrawImg, useMouseImg } from '../hooks/draw';\nimport lbxx from '../../assets/mouse.png';\nlet img = new Image();\nimg.src = lbxx;\nexport default function () {\n\tconst canvas = useRef(null);\n\tconst [cursor, setImg] = useMouseImg(canvas);\n\tuseEffect(() =\u003e {\n\t\tsetImg(img);\n\t}, []);\n\treturn (\n\t\t\u0026#x3C;div style={{ position: 'relative' }}\u003e\n\t\t\t\u0026#x3C;canvas\n\t\t\t\tstyle={{ position: 'absolute', top: 0, left: 0, border: '1px solid red', cursor: 'none' }}\n\t\t\t\tref={canvas}\n\t\t\t\theight=\"500\"\n\t\t\t\twidth=\"500\"\n\t\t\t/\u003e\n\t\t\u0026#x3C;/div\u003e\n\t);\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003ePage3 这块是组装 hooks 的部分了，Page3 的需求用到了很多 1，2 里面都有的逻辑\n不过道理还是一样，是我在需求中说的，使用了 2 个 click 事件，去调用 hooks 中的 api\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-js\"\u003eimport React, { useRef, useEffect } from 'react';\nimport { useDrawImg, useMouseImg } from '../hooks/draw';\nimport lbxx from '../../assets/mouse.png';\nimport fcskdrt from '../../assets/fcskdrt.jpg';\nimport nai200 from '../../assets/nai200.jpg';\nimport qi60 from '../../assets/qi60.jpg';\nimport kzp from '../../assets/kzp.jpg';\nimport wlssdmg from '../../assets/wlssdmg.jpg';\nlet img = new Image();\nimg.src = lbxx;\nexport default function () {\n\tconst canvas = useRef(null);\n\tconst canvasCursor = useRef(null);\n\tconst { drawImage, clear } = useDrawImg(canvas);\n\tconst [cursor, setImg] = useMouseImg(canvasCursor);\n\tuseEffect(() =\u003e {\n\t\tsetImg(img);\n\t\t// 绑定事件\n\t\tcanvasCursor.current.addEventListener('click', onCanvasClick);\n\t}, []);\n\tfunction onCanvasClick(e) {\n\t\tconst { offsetX: x, offsetY: y } = e;\n\t\t// 画画\n\t\tif (cursor.current !== img) {\n\t\t\tconsole.log(x, y, cursor.current);\n\t\t\tdrawImage(x, y, cursor.current);\n\t\t}\n\t\t// 改变光标\n\t\tsetImg(img);\n\t}\n\tfunction changeImg(e) {\n\t\tsetImg(e.target);\n\t}\n\treturn (\n\t\t\u0026#x3C;div style={{ position: 'relative' }}\u003e\n\t\t\t\u0026#x3C;canvas\n\t\t\t\tstyle={{ position: 'absolute', top: 0, left: 0, border: '1px solid red', cursor: 'none' }}\n\t\t\t\tref={canvas}\n\t\t\t\theight=\"500\"\n\t\t\t\twidth=\"500\"\n\t\t\t/\u003e\n\t\t\t\u0026#x3C;canvas\n\t\t\t\tstyle={{ position: 'absolute', top: 0, left: 0, border: '1px solid red', cursor: 'none' }}\n\t\t\t\tref={canvasCursor}\n\t\t\t\theight=\"500\"\n\t\t\t\twidth=\"500\"\n\t\t\t/\u003e\n\t\t\t\u0026#x3C;div\n\t\t\t\tstyle={{\n\t\t\t\t\tdisplay: 'flex',\n\t\t\t\t\tflexDirection: 'column',\n\t\t\t\t\talignItems: 'center',\n\t\t\t\t\tposition: 'absolute',\n\t\t\t\t\tleft: '500px',\n\t\t\t\t}}\n\t\t\t\u003e\n\t\t\t\t\u0026#x3C;img onClick={changeImg} src={fcskdrt} alt=\"\" /\u003e\n\t\t\t\t\u0026#x3C;img onClick={changeImg} src={nai200} alt=\"\" /\u003e\n\t\t\t\t\u0026#x3C;img onClick={changeImg} src={qi60} alt=\"\" /\u003e\n\t\t\t\t\u0026#x3C;img onClick={changeImg} src={kzp} alt=\"\" /\u003e\n\t\t\t\t\u0026#x3C;img onClick={changeImg} src={wlssdmg} alt=\"\" /\u003e\n\t\t\t\u0026#x3C;/div\u003e\n\t\t\u0026#x3C;/div\u003e\n\t);\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e可以看到我 Page3 中没有写任何画图的 function，也没有监听鼠标移动，全是用之前写好的 hooks 实现的，这样就达到了逻辑复用，在我们开发中也可以把明显可复用的逻辑抽到 hooks 中写，节省自己的时间，代码也变得好维护。\u003c/p\u003e\n","title":"[hooks学习笔记]怎么使用hooks达到逻辑的复用","tags":["react"],"date":"2020-07-03","image":"/6/1.gif","abstract":"之前写 class 组件时，一些功能模块的一些 state/function，很难复用。 试过 create-react-class，把 state/function 按功能分小块一起拼装成一个 class，但是看起来还是不太舒服 react16.8 出了 hooks 之后，开始学习 hooks，感觉这样写的话会清晰一些，用例子带大家感受一下。"}},"__N_SSG":true},"page":"/posts/[id]","query":{"id":"6"},"buildId":"V73A7xuOJj_dCX4Sowzmy","assetPrefix":"/boboan.github.io","isFallback":false,"gsp":true}</script><script nomodule="" src="/boboan.github.io/_next/static/chunks/polyfills-8683bd742a84c1edd48c.js"></script><script src="/boboan.github.io/_next/static/chunks/webpack-1e2c3574589f9928e453.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/framework-30ca2fd61d3981f25bc6.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/commons-666c9ea77d97f6d5889d.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/main-49c7da928d6901734eef.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/620-c297bb4641d2e42f7ec2.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/pages/_app-4ea85989b9508dee6a70.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/506-6791c8fe1b38e799b0ee.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/555-5819a55def996b98014b.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/522-e45333ebcf36799b860c.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/257-d61dc7d0ca07f45c42bb.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/pages/posts/%5Bid%5D-eb1b0e8fcea1baf1d35c.js" async=""></script><script src="/boboan.github.io/_next/static/V73A7xuOJj_dCX4Sowzmy/_buildManifest.js" async=""></script><script src="/boboan.github.io/_next/static/V73A7xuOJj_dCX4Sowzmy/_ssgManifest.js" async=""></script></body></html>

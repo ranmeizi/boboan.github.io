@@ -1,0 +1,126 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width"/><meta charSet="utf-8"/><title>React和Vue组件通信</title><link rel="stylesheet" href="/boboan.github.io/prism/prism.css"/><script src="/boboan.github.io/prism/prism.js"></script><meta name="next-head-count" content="5"/><link rel="preload" href="/boboan.github.io/_next/static/css/ea031c1d2bc84f99b82c.css" as="style"/><link rel="stylesheet" href="/boboan.github.io/_next/static/css/ea031c1d2bc84f99b82c.css" data-n-g=""/><link rel="preload" href="/boboan.github.io/_next/static/css/57d17aee5b6a8e2e889f.css" as="style"/><link rel="stylesheet" href="/boboan.github.io/_next/static/css/57d17aee5b6a8e2e889f.css" data-n-p=""/><noscript data-n-css=""></noscript><link rel="preload" href="/boboan.github.io/_next/static/chunks/webpack-1e2c3574589f9928e453.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/framework-30ca2fd61d3981f25bc6.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/commons-666c9ea77d97f6d5889d.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/main-49c7da928d6901734eef.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/620-c297bb4641d2e42f7ec2.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/pages/_app-4ea85989b9508dee6a70.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/506-6791c8fe1b38e799b0ee.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/555-5819a55def996b98014b.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/522-e45333ebcf36799b860c.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/257-d61dc7d0ca07f45c42bb.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/pages/posts/%5Bid%5D-eb1b0e8fcea1baf1d35c.js" as="script"/></head><body><div id="__next"><div id="cd" class="jss1" style="background:#fff;height:100vh;width:100vw;left:0;top:0;position:fixed;opacity:1;z-index:999;transition:0.5s"></div><div><header class="jss38"><div class="jss43"><header class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorDefault MuiPaper-elevation4"><div class="MuiContainer-root jss56 MuiContainer-disableGutters MuiContainer-maxWidthLg"><div class="jss57 "><div class="MuiToolbar-root MuiToolbar-dense"><button class="MuiButtonBase-root MuiIconButton-root jss45 jss44 MuiIconButton-colorInherit MuiIconButton-edgeStart" tabindex="0" type="button" aria-label="open drawer"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg></span></button><h6 class="MuiTypography-root jss46 MuiTypography-h6 MuiTypography-noWrap"><a href="/boboan.github.io"><span class="jss60 logo"><span class="jss61 left">&lt; </span>Boboan<span class="jss61 right"> &gt;</span></span></a></h6><div class="jss47"><div class="MuiTabs-root"><div class="MuiTabs-scroller MuiTabs-fixed" style="overflow:hidden"><div aria-label="simple tabs example" class="MuiTabs-flexContainer" role="tablist"><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">标签</span></button><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">归档</span></button><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">关于</span></button><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">Screeps</span></button></div></div></div></div><div class="jss48"><div class="jss49"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div><div class="MuiInputBase-root jss50"><input type="text" placeholder="站内搜索" aria-label="search" class="MuiInputBase-input jss51"/></div></div><button class="MuiButtonBase-root MuiIconButton-root jss52 MuiIconButton-colorInherit MuiIconButton-edgeStart" tabindex="0" type="button" aria-label="open drawer"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"></path></svg></span></button></div></div><h3 class="jss58 "> <!-- -->React和Vue组件通信<!-- --> </h3><div role="presentation" class="jss62" style="transform:scale(0);visibility:hidden"><button class="MuiButtonBase-root MuiIconButton-root jss59 MuiIconButton-colorInherit MuiIconButton-edgeStart" tabindex="0" type="button" aria-label="open drawer"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg></span></button></div></div></header></div></header><div id="back-to-top-anchor"></div><main class="jss39"><div class="MuiContainer-root jss40 MuiContainer-disableGutters MuiContainer-maxWidthLg"><div class="jss41" style="width:0px;display:none"><div class="jss63"><div class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"><button class="MuiButtonBase-root MuiCardActionArea-root" tabindex="0" type="button"><div class="MuiCardMedia-root jss64 " style="background-image:url(&quot;/boboan.github.io/images/back1.jpg&quot;)" title="Contemplative Reptile"></div><div class="jss67 "></div><div class="MuiCardContent-root"><h2 class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom">Boboan</h2><p class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary">boboan.hand.touch(fish)</p></div><span class="MuiCardActionArea-focusHighlight"></span></button><div class="MuiCardActions-root MuiCardActions-spacing"><button class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall" tabindex="0" type="button"><span class="MuiButton-label">摸鱼</span></button><button class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall" tabindex="0" type="button"><span class="MuiButton-label">一会再摸</span></button></div></div><div class="jss68"><div class="MuiPaper-root MuiPaper-elevation4 MuiPaper-rounded"><nav class="MuiList-root jss69 MuiList-padding" aria-label="main mailbox folders"><a class="jss70" target="_blank" href="https://github.com/ranmeizi"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Github</span></div><img class="jss71" src="/boboan.github.io/images/github-icon.jpg"/></div></a><hr class="MuiDivider-root"/><a class="jss70" target="_blank" href="https://gitee.com/boboanzuiniubi"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Gitee</span></div><img class="jss71" src="/boboan.github.io/images/gitee-icon.jpg"/></div></a><hr class="MuiDivider-root"/><a class="jss70" target="_blank" href="https://www.jianshu.com/u/fc0db81874d5"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">简书</span></div><img class="jss71" src="/boboan.github.io/images/jianshu-icon.jpg"/></div></a></nav></div></div></div></div><div class="MuiPaper-root jss42 MuiPaper-elevation1 MuiPaper-rounded"><article><h1 class="utils_headingXl__1XecN" id="titleH1">React和Vue组件通信</h1><div class="utils_lightText__12Ckm"><time dateTime="2020-09-09">September 9, 2020</time></div><div class="note-view"><h2>测试一下可行性</h2>
+<p>js 上感觉完全可行，样式可能会有冲突</p>
+<h2>桥梁</h2>
+<p>用发布订阅模式，创建一个事件对象</p>
+<pre><code class="language-js">// 执行某操作后需要触发别的组件行为的时候,绑定一个bus
+function EventBus() {
+    this.eventList = {}
+}
+// 订阅事件
+EventBus.prototype.on = function (eventName, callback) {
+    const eList = this.eventList
+    if (eventName in eList) {
+        // 有这个key
+        eList[eventName].push(callback)
+    } else {
+        // 没有key
+        eList[eventName] = [callback]
+    }
+}
+// 解绑事件
+EventBus.prototype.un = function (eventName, callback) {
+    const eList = this.eventList[eventName] || [] //容错
+    for (let i = 0; i &#x3C; eList.length; i++) {
+        if (eList[i] === callback) {
+            // 删除这个callback
+            eList.splice(i, 1)
+            if (eList.length === 0) {
+                // delete回收
+                delete this.eventList[eventName]
+            }
+            return
+        }
+    }
+}
+EventBus.prototype.emit = function (eventName, data) {
+    (this.eventList[eventName] || []).forEach(cb => cb(data))
+}
+
+window.EB = new EventBus()
+</code></pre>
+<h2>创建测试项目</h2>
+<p>create-react-app 创建个项目
+vue-cli 创建个项目</p>
+<h2>react 项目的工作</h2>
+<p>身为四年级的 react 作为最好的老大哥，去 render vue
+vue 项目作为一个 count 计数器 功能的组件</p>
+<h3>1.告知 vue 要渲染，并准备一个 dom 作为容器</h3>
+<h3>2.功能按钮，触发 vue count++</h3>
+<pre><code class="language-js">function App() {
+  function renderVue() {
+    window.EB.emit('vue:render me','#bpp')
+  }
+  function count() {
+    window.EB.emit('vue:let me ++')
+  }
+  return (
+    &#x3C;div className="App">
+      &#x3C;header className="App-header">
+        &#x3C;img src={logo} className="App-logo" alt="logo" />
+        &#x3C;p>
+          Edit &#x3C;code>src/App.js&#x3C;/code> and save to reload.
+        &#x3C;/p>
+        &#x3C;a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        &#x3C;/a>
+        &#x3C;div id='bpp'>&#x3C;/div>
+        &#x3C;button onClick={renderVue}>渲染vue count&#x3C;/button>
+        &#x3C;button onClick={count}>vue count++&#x3C;/button>
+      &#x3C;/header>
+    &#x3C;/div>
+  );
+}
+</code></pre>
+<h2>vue 项目的工作</h2>
+<p>###1.延迟渲染，等到 react 叫他渲染在渲染</p>
+<pre><code class="language-js">import Vue from 'vue'
+import App from './App.vue'
+
+Vue.config.productionTip = false
+
+
+
+window.EB.on('vue:render me', (elementId) => {
+  new Vue({
+    render: h => h(App),
+  }).$mount(elementId)
+})
+</code></pre>
+<p>###2.有自己的一个 count 状态值监听事件，修改 count 值</p>
+<pre><code class="language-js">export default {
+  name: "HelloWorld",
+  data() {
+    return {
+      count: 0,
+    };
+  },
+  mounted() {
+    window.EB.on("vue:let me ++", this.jiajia);
+  },
+  beforeDestroy() {
+    window.EB.un("vue:let me ++", this.jiajia);
+  },
+  methods: {
+    jiajia() {
+      this.count++;
+    },
+  },
+  props: {
+    msg: String,
+  },
+};
+</code></pre>
+<h2>打包</h2>
+<p>把 vue 资源路径改成/vue 好管理
+在 react 项目 html 页引入 vue 静态资源
+<img src="./8/1.png" alt="image.png"></p>
+<h2>效果</h2>
+<p><img src="./8/2.gif" alt="ezgif-4-858487c43aaa.gif"></p>
+<h2>结论</h2>
+<p>没啥用，挺好玩的，纯 js 的，css 还可能污染，不过不用在意 2 个项目的环境，反正运行的都是 js 代码</p>
+</div></article></div></div></main></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"postData":{"id":"8","contentHtml":"\u003ch2\u003e测试一下可行性\u003c/h2\u003e\n\u003cp\u003ejs 上感觉完全可行，样式可能会有冲突\u003c/p\u003e\n\u003ch2\u003e桥梁\u003c/h2\u003e\n\u003cp\u003e用发布订阅模式，创建一个事件对象\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-js\"\u003e// 执行某操作后需要触发别的组件行为的时候,绑定一个bus\nfunction EventBus() {\n    this.eventList = {}\n}\n// 订阅事件\nEventBus.prototype.on = function (eventName, callback) {\n    const eList = this.eventList\n    if (eventName in eList) {\n        // 有这个key\n        eList[eventName].push(callback)\n    } else {\n        // 没有key\n        eList[eventName] = [callback]\n    }\n}\n// 解绑事件\nEventBus.prototype.un = function (eventName, callback) {\n    const eList = this.eventList[eventName] || [] //容错\n    for (let i = 0; i \u0026#x3C; eList.length; i++) {\n        if (eList[i] === callback) {\n            // 删除这个callback\n            eList.splice(i, 1)\n            if (eList.length === 0) {\n                // delete回收\n                delete this.eventList[eventName]\n            }\n            return\n        }\n    }\n}\nEventBus.prototype.emit = function (eventName, data) {\n    (this.eventList[eventName] || []).forEach(cb =\u003e cb(data))\n}\n\nwindow.EB = new EventBus()\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch2\u003e创建测试项目\u003c/h2\u003e\n\u003cp\u003ecreate-react-app 创建个项目\nvue-cli 创建个项目\u003c/p\u003e\n\u003ch2\u003ereact 项目的工作\u003c/h2\u003e\n\u003cp\u003e身为四年级的 react 作为最好的老大哥，去 render vue\nvue 项目作为一个 count 计数器 功能的组件\u003c/p\u003e\n\u003ch3\u003e1.告知 vue 要渲染，并准备一个 dom 作为容器\u003c/h3\u003e\n\u003ch3\u003e2.功能按钮，触发 vue count++\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class=\"language-js\"\u003efunction App() {\n  function renderVue() {\n    window.EB.emit('vue:render me','#bpp')\n  }\n  function count() {\n    window.EB.emit('vue:let me ++')\n  }\n  return (\n    \u0026#x3C;div className=\"App\"\u003e\n      \u0026#x3C;header className=\"App-header\"\u003e\n        \u0026#x3C;img src={logo} className=\"App-logo\" alt=\"logo\" /\u003e\n        \u0026#x3C;p\u003e\n          Edit \u0026#x3C;code\u003esrc/App.js\u0026#x3C;/code\u003e and save to reload.\n        \u0026#x3C;/p\u003e\n        \u0026#x3C;a\n          className=\"App-link\"\n          href=\"https://reactjs.org\"\n          target=\"_blank\"\n          rel=\"noopener noreferrer\"\n        \u003e\n          Learn React\n        \u0026#x3C;/a\u003e\n        \u0026#x3C;div id='bpp'\u003e\u0026#x3C;/div\u003e\n        \u0026#x3C;button onClick={renderVue}\u003e渲染vue count\u0026#x3C;/button\u003e\n        \u0026#x3C;button onClick={count}\u003evue count++\u0026#x3C;/button\u003e\n      \u0026#x3C;/header\u003e\n    \u0026#x3C;/div\u003e\n  );\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch2\u003evue 项目的工作\u003c/h2\u003e\n\u003cp\u003e###1.延迟渲染，等到 react 叫他渲染在渲染\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-js\"\u003eimport Vue from 'vue'\nimport App from './App.vue'\n\nVue.config.productionTip = false\n\n\n\nwindow.EB.on('vue:render me', (elementId) =\u003e {\n  new Vue({\n    render: h =\u003e h(App),\n  }).$mount(elementId)\n})\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e###2.有自己的一个 count 状态值监听事件，修改 count 值\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-js\"\u003eexport default {\n  name: \"HelloWorld\",\n  data() {\n    return {\n      count: 0,\n    };\n  },\n  mounted() {\n    window.EB.on(\"vue:let me ++\", this.jiajia);\n  },\n  beforeDestroy() {\n    window.EB.un(\"vue:let me ++\", this.jiajia);\n  },\n  methods: {\n    jiajia() {\n      this.count++;\n    },\n  },\n  props: {\n    msg: String,\n  },\n};\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch2\u003e打包\u003c/h2\u003e\n\u003cp\u003e把 vue 资源路径改成/vue 好管理\n在 react 项目 html 页引入 vue 静态资源\n\u003cimg src=\"./8/1.png\" alt=\"image.png\"\u003e\u003c/p\u003e\n\u003ch2\u003e效果\u003c/h2\u003e\n\u003cp\u003e\u003cimg src=\"./8/2.gif\" alt=\"ezgif-4-858487c43aaa.gif\"\u003e\u003c/p\u003e\n\u003ch2\u003e结论\u003c/h2\u003e\n\u003cp\u003e没啥用，挺好玩的，纯 js 的，css 还可能污染，不过不用在意 2 个项目的环境，反正运行的都是 js 代码\u003c/p\u003e\n","title":"React和Vue组件通信","tags":["react","vue"],"date":"2020-09-09","image":"/8/1.png","abstract":""}},"__N_SSG":true},"page":"/posts/[id]","query":{"id":"8"},"buildId":"V73A7xuOJj_dCX4Sowzmy","assetPrefix":"/boboan.github.io","isFallback":false,"gsp":true}</script><script nomodule="" src="/boboan.github.io/_next/static/chunks/polyfills-8683bd742a84c1edd48c.js"></script><script src="/boboan.github.io/_next/static/chunks/webpack-1e2c3574589f9928e453.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/framework-30ca2fd61d3981f25bc6.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/commons-666c9ea77d97f6d5889d.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/main-49c7da928d6901734eef.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/620-c297bb4641d2e42f7ec2.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/pages/_app-4ea85989b9508dee6a70.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/506-6791c8fe1b38e799b0ee.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/555-5819a55def996b98014b.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/522-e45333ebcf36799b860c.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/257-d61dc7d0ca07f45c42bb.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/pages/posts/%5Bid%5D-eb1b0e8fcea1baf1d35c.js" async=""></script><script src="/boboan.github.io/_next/static/V73A7xuOJj_dCX4Sowzmy/_buildManifest.js" async=""></script><script src="/boboan.github.io/_next/static/V73A7xuOJj_dCX4Sowzmy/_ssgManifest.js" async=""></script></body></html>

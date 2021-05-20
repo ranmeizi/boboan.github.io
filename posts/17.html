@@ -1,0 +1,100 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width"/><meta charSet="utf-8"/><title>webpackplugin实现build模块上传</title><link rel="stylesheet" href="/boboan.github.io/prism/prism.css"/><script src="/boboan.github.io/prism/prism.js"></script><meta name="next-head-count" content="5"/><link rel="preload" href="/boboan.github.io/_next/static/css/ea031c1d2bc84f99b82c.css" as="style"/><link rel="stylesheet" href="/boboan.github.io/_next/static/css/ea031c1d2bc84f99b82c.css" data-n-g=""/><link rel="preload" href="/boboan.github.io/_next/static/css/57d17aee5b6a8e2e889f.css" as="style"/><link rel="stylesheet" href="/boboan.github.io/_next/static/css/57d17aee5b6a8e2e889f.css" data-n-p=""/><noscript data-n-css=""></noscript><link rel="preload" href="/boboan.github.io/_next/static/chunks/webpack-1e2c3574589f9928e453.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/framework-30ca2fd61d3981f25bc6.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/commons-666c9ea77d97f6d5889d.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/main-49c7da928d6901734eef.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/620-c297bb4641d2e42f7ec2.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/pages/_app-4ea85989b9508dee6a70.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/506-6791c8fe1b38e799b0ee.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/555-5819a55def996b98014b.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/522-e45333ebcf36799b860c.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/257-d61dc7d0ca07f45c42bb.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/pages/posts/%5Bid%5D-eb1b0e8fcea1baf1d35c.js" as="script"/></head><body><div id="__next"><div id="cd" class="jss1" style="background:#fff;height:100vh;width:100vw;left:0;top:0;position:fixed;opacity:1;z-index:999;transition:0.5s"></div><div><header class="jss72"><div class="jss77"><header class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorDefault MuiPaper-elevation4"><div class="MuiContainer-root jss90 MuiContainer-disableGutters MuiContainer-maxWidthLg"><div class="jss91 "><div class="MuiToolbar-root MuiToolbar-dense"><button class="MuiButtonBase-root MuiIconButton-root jss79 jss78 MuiIconButton-colorInherit MuiIconButton-edgeStart" tabindex="0" type="button" aria-label="open drawer"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg></span></button><h6 class="MuiTypography-root jss80 MuiTypography-h6 MuiTypography-noWrap"><a href="/boboan.github.io"><span class="jss94 logo"><span class="jss95 left">&lt; </span>Boboan<span class="jss95 right"> &gt;</span></span></a></h6><div class="jss81"><div class="MuiTabs-root"><div class="MuiTabs-scroller MuiTabs-fixed" style="overflow:hidden"><div aria-label="simple tabs example" class="MuiTabs-flexContainer" role="tablist"><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">标签</span></button><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">归档</span></button><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">关于</span></button><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">Screeps</span></button></div></div></div></div><div class="jss82"><div class="jss83"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div><div class="MuiInputBase-root jss84"><input type="text" placeholder="站内搜索" aria-label="search" class="MuiInputBase-input jss85"/></div></div><button class="MuiButtonBase-root MuiIconButton-root jss86 MuiIconButton-colorInherit MuiIconButton-edgeStart" tabindex="0" type="button" aria-label="open drawer"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"></path></svg></span></button></div></div><h3 class="jss92 "> <!-- -->webpackplugin实现build模块上传<!-- --> </h3><div role="presentation" class="jss96" style="transform:scale(0);visibility:hidden"><button class="MuiButtonBase-root MuiIconButton-root jss93 MuiIconButton-colorInherit MuiIconButton-edgeStart" tabindex="0" type="button" aria-label="open drawer"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg></span></button></div></div></header></div></header><div id="back-to-top-anchor"></div><main class="jss73"><div class="MuiContainer-root jss74 MuiContainer-disableGutters MuiContainer-maxWidthLg"><div class="jss75" style="width:0px;display:none"><div class="jss97"><div class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"><button class="MuiButtonBase-root MuiCardActionArea-root" tabindex="0" type="button"><div class="MuiCardMedia-root jss98 " style="background-image:url(&quot;/boboan.github.io/images/back1.jpg&quot;)" title="Contemplative Reptile"></div><div class="jss101 "></div><div class="MuiCardContent-root"><h2 class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom">Boboan</h2><p class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary">boboan.hand.touch(fish)</p></div><span class="MuiCardActionArea-focusHighlight"></span></button><div class="MuiCardActions-root MuiCardActions-spacing"><button class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall" tabindex="0" type="button"><span class="MuiButton-label">摸鱼</span></button><button class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall" tabindex="0" type="button"><span class="MuiButton-label">一会再摸</span></button></div></div><div class="jss102"><div class="MuiPaper-root MuiPaper-elevation4 MuiPaper-rounded"><nav class="MuiList-root jss103 MuiList-padding" aria-label="main mailbox folders"><a class="jss104" target="_blank" href="https://github.com/ranmeizi"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Github</span></div><img class="jss105" src="/boboan.github.io/images/github-icon.jpg"/></div></a><hr class="MuiDivider-root"/><a class="jss104" target="_blank" href="https://gitee.com/boboanzuiniubi"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Gitee</span></div><img class="jss105" src="/boboan.github.io/images/gitee-icon.jpg"/></div></a><hr class="MuiDivider-root"/><a class="jss104" target="_blank" href="https://www.jianshu.com/u/fc0db81874d5"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">简书</span></div><img class="jss105" src="/boboan.github.io/images/jianshu-icon.jpg"/></div></a></nav></div></div></div></div><div class="MuiPaper-root jss76 MuiPaper-elevation1 MuiPaper-rounded"><article><h1 class="utils_headingXl__1XecN" id="titleH1">webpackplugin实现build模块上传</h1><div class="utils_lightText__12Ckm"><time dateTime="2021-03-05">March 5, 2021</time></div><div class="note-view"><p>最近在玩screeps，screeps客户端自带一个ide，但用着不是很舒服，也不支持typescript，但官方提供了代码上传api可以把自己编译过后的模块上传，所以我想，能不能用webpack构建一个screeps项目，在build之后，调用screeps的api把代码上传上服务器。</p>
+<h3>暴露 library</h3>
+<p>output.librarytarget：<a href="https://webpack.docschina.org/configuration/output/#outputlibrarytarget">https://webpack.docschina.org/configuration/output/#outputlibrarytarget</a>
+webpack默认entry是不暴露任何东西给外界的，但screeps代码main.js必须暴露一个loop函数<code>module.exports={loop:()=>{}}</code>
+配置webpack的output.libraryTarget属性，来选择用什么方式暴露你的library，我要用<code>module.exports</code>暴露模块，所以我选择<code>commonjs2</code>方式</p>
+<h3>实现模块上传</h3>
+<p>查看webpack文档，在Plugins中有我需要的钩子
+<img src="./17/1.png" alt="emit">
+<a href="https://webpack.docschina.org/api/compiler-hooks/#emit">https://webpack.docschina.org/api/compiler-hooks/#emit</a>
+/code api是上传字符串的代码，emit的的时机正好是获取到asset还未写入output目录，在emit时从compilation对象中拿到assets值，提交到api接口就能实现上传</p>
+<h3>options</h3>
+<pre><code class="language-js">const path = require('path')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const ScreepUploadPlugin = require('./ScreepUploadPlugin')
+
+module.exports = {
+  entry: '/src/main.ts',
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
+  plugins: [
+    new CleanWebpackPlugin(),
+    new ScreepUploadPlugin()
+  ],
+  output: {
+    filename: 'main.js',
+    libraryTarget: 'commonjs2',
+    path: path.resolve(__dirname, '../dist'),
+  },
+}
+</code></pre>
+<h3>Plugin</h3>
+<pre><code class="language-js">const https = require('https');
+const { email, password, branch } = require('../config/screeps')
+
+function upload(data) {
+  const options = {
+    hostname: 'screeps.com',
+    port: 443,
+    path: '/api/user/code',
+    method: 'POST',
+    auth: email + ':' + password,
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8'
+    }
+  }
+  return new Promise((resolve, reject) => {
+    const req = https.request(options, (res) => {
+      resolve(res)
+    });
+
+    req.on('error', e => {
+      reject(e)
+    })
+    req.write(JSON.stringify(data));
+    req.end();
+  })
+}
+
+class ScreepsUploadPlugin {
+  apply(compiler) {
+    compiler.hooks.emit.tapAsync(
+      'ScreepsUploadPlugin',
+      (compilation, callback) => {
+        // Do something async...
+        const data = {
+          branch,
+          modules: {}
+        };
+        const REG = new RegExp('([^\..]+)\..+')
+        for (let module in compilation.assets) {
+          const name = module.replace(REG, '$1')
+          data.modules[name] = compilation.assets[module]._value
+        }
+        upload(data).then(res => {
+          res.on('data', (d) => {
+            console.log('ScreepsUploadPlugin success', d.toString())
+          });
+          callback();
+        }).catch(err => {
+          console.log('ScreepsUploadPlugin error', 'upload fail!', err)
+          callback();
+        })
+      }
+    );
+  }
+}
+
+module.exports = ScreepsUploadPlugin
+</code></pre>
+</div></article></div></div></main></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"postData":{"id":"17","contentHtml":"\u003cp\u003e最近在玩screeps，screeps客户端自带一个ide，但用着不是很舒服，也不支持typescript，但官方提供了代码上传api可以把自己编译过后的模块上传，所以我想，能不能用webpack构建一个screeps项目，在build之后，调用screeps的api把代码上传上服务器。\u003c/p\u003e\n\u003ch3\u003e暴露 library\u003c/h3\u003e\n\u003cp\u003eoutput.librarytarget：\u003ca href=\"https://webpack.docschina.org/configuration/output/#outputlibrarytarget\"\u003ehttps://webpack.docschina.org/configuration/output/#outputlibrarytarget\u003c/a\u003e\nwebpack默认entry是不暴露任何东西给外界的，但screeps代码main.js必须暴露一个loop函数\u003ccode\u003emodule.exports={loop:()=\u003e{}}\u003c/code\u003e\n配置webpack的output.libraryTarget属性，来选择用什么方式暴露你的library，我要用\u003ccode\u003emodule.exports\u003c/code\u003e暴露模块，所以我选择\u003ccode\u003ecommonjs2\u003c/code\u003e方式\u003c/p\u003e\n\u003ch3\u003e实现模块上传\u003c/h3\u003e\n\u003cp\u003e查看webpack文档，在Plugins中有我需要的钩子\n\u003cimg src=\"./17/1.png\" alt=\"emit\"\u003e\n\u003ca href=\"https://webpack.docschina.org/api/compiler-hooks/#emit\"\u003ehttps://webpack.docschina.org/api/compiler-hooks/#emit\u003c/a\u003e\n/code api是上传字符串的代码，emit的的时机正好是获取到asset还未写入output目录，在emit时从compilation对象中拿到assets值，提交到api接口就能实现上传\u003c/p\u003e\n\u003ch3\u003eoptions\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class=\"language-js\"\u003econst path = require('path')\nconst { CleanWebpackPlugin } = require('clean-webpack-plugin');\nconst ScreepUploadPlugin = require('./ScreepUploadPlugin')\n\nmodule.exports = {\n  entry: '/src/main.ts',\n  module: {\n    rules: [\n      {\n        test: /\\.tsx?$/,\n        use: 'ts-loader',\n        exclude: /node_modules/,\n      },\n    ],\n  },\n  resolve: {\n    extensions: ['.tsx', '.ts', '.js'],\n  },\n  plugins: [\n    new CleanWebpackPlugin(),\n    new ScreepUploadPlugin()\n  ],\n  output: {\n    filename: 'main.js',\n    libraryTarget: 'commonjs2',\n    path: path.resolve(__dirname, '../dist'),\n  },\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3\u003ePlugin\u003c/h3\u003e\n\u003cpre\u003e\u003ccode class=\"language-js\"\u003econst https = require('https');\nconst { email, password, branch } = require('../config/screeps')\n\nfunction upload(data) {\n  const options = {\n    hostname: 'screeps.com',\n    port: 443,\n    path: '/api/user/code',\n    method: 'POST',\n    auth: email + ':' + password,\n    headers: {\n      'Content-Type': 'application/json; charset=utf-8'\n    }\n  }\n  return new Promise((resolve, reject) =\u003e {\n    const req = https.request(options, (res) =\u003e {\n      resolve(res)\n    });\n\n    req.on('error', e =\u003e {\n      reject(e)\n    })\n    req.write(JSON.stringify(data));\n    req.end();\n  })\n}\n\nclass ScreepsUploadPlugin {\n  apply(compiler) {\n    compiler.hooks.emit.tapAsync(\n      'ScreepsUploadPlugin',\n      (compilation, callback) =\u003e {\n        // Do something async...\n        const data = {\n          branch,\n          modules: {}\n        };\n        const REG = new RegExp('([^\\..]+)\\..+')\n        for (let module in compilation.assets) {\n          const name = module.replace(REG, '$1')\n          data.modules[name] = compilation.assets[module]._value\n        }\n        upload(data).then(res =\u003e {\n          res.on('data', (d) =\u003e {\n            console.log('ScreepsUploadPlugin success', d.toString())\n          });\n          callback();\n        }).catch(err =\u003e {\n          console.log('ScreepsUploadPlugin error', 'upload fail!', err)\n          callback();\n        })\n      }\n    );\n  }\n}\n\nmodule.exports = ScreepsUploadPlugin\n\u003c/code\u003e\u003c/pre\u003e\n","title":"webpackplugin实现build模块上传","tags":["webpack"],"date":"2021-03-05","image":"/17/1.png","abstract":"最近在玩screeps，screeps客户端自带一个ide，但用着不是很舒服，也不支持typescript，但官方提供了代码上传api可以把自己编译过后的模块上传，所以我想，能不能用webpack构建一个screeps项目，在build之后，调用screeps的api把代码上传上服务器。"}},"__N_SSG":true},"page":"/posts/[id]","query":{"id":"17"},"buildId":"V73A7xuOJj_dCX4Sowzmy","assetPrefix":"/boboan.github.io","isFallback":false,"gsp":true}</script><script nomodule="" src="/boboan.github.io/_next/static/chunks/polyfills-8683bd742a84c1edd48c.js"></script><script src="/boboan.github.io/_next/static/chunks/webpack-1e2c3574589f9928e453.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/framework-30ca2fd61d3981f25bc6.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/commons-666c9ea77d97f6d5889d.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/main-49c7da928d6901734eef.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/620-c297bb4641d2e42f7ec2.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/pages/_app-4ea85989b9508dee6a70.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/506-6791c8fe1b38e799b0ee.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/555-5819a55def996b98014b.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/522-e45333ebcf36799b860c.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/257-d61dc7d0ca07f45c42bb.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/pages/posts/%5Bid%5D-eb1b0e8fcea1baf1d35c.js" async=""></script><script src="/boboan.github.io/_next/static/V73A7xuOJj_dCX4Sowzmy/_buildManifest.js" async=""></script><script src="/boboan.github.io/_next/static/V73A7xuOJj_dCX4Sowzmy/_ssgManifest.js" async=""></script></body></html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width"/><meta charSet="utf-8"/><title>前端通过Chrome插件跨域请求</title><link rel="stylesheet" href="/boboan.github.io/prism/prism.css"/><script src="/boboan.github.io/prism/prism.js"></script><meta name="next-head-count" content="5"/><link rel="preload" href="/boboan.github.io/_next/static/css/ea031c1d2bc84f99b82c.css" as="style"/><link rel="stylesheet" href="/boboan.github.io/_next/static/css/ea031c1d2bc84f99b82c.css" data-n-g=""/><link rel="preload" href="/boboan.github.io/_next/static/css/57d17aee5b6a8e2e889f.css" as="style"/><link rel="stylesheet" href="/boboan.github.io/_next/static/css/57d17aee5b6a8e2e889f.css" data-n-p=""/><noscript data-n-css=""></noscript><link rel="preload" href="/boboan.github.io/_next/static/chunks/webpack-1e2c3574589f9928e453.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/framework-30ca2fd61d3981f25bc6.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/commons-666c9ea77d97f6d5889d.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/main-49c7da928d6901734eef.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/620-c297bb4641d2e42f7ec2.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/pages/_app-4ea85989b9508dee6a70.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/506-6791c8fe1b38e799b0ee.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/555-5819a55def996b98014b.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/522-e45333ebcf36799b860c.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/257-d61dc7d0ca07f45c42bb.js" as="script"/><link rel="preload" href="/boboan.github.io/_next/static/chunks/pages/posts/%5Bid%5D-eb1b0e8fcea1baf1d35c.js" as="script"/></head><body><div id="__next"><div id="cd" class="jss1" style="background:#fff;height:100vh;width:100vw;left:0;top:0;position:fixed;opacity:1;z-index:999;transition:0.5s"></div><div><header class="jss2"><div class="jss7"><header class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorDefault MuiPaper-elevation4"><div class="MuiContainer-root jss20 MuiContainer-disableGutters MuiContainer-maxWidthLg"><div class="jss21 "><div class="MuiToolbar-root MuiToolbar-dense"><button class="MuiButtonBase-root MuiIconButton-root jss9 jss8 MuiIconButton-colorInherit MuiIconButton-edgeStart" tabindex="0" type="button" aria-label="open drawer"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg></span></button><h6 class="MuiTypography-root jss10 MuiTypography-h6 MuiTypography-noWrap"><a href="/boboan.github.io"><span class="jss24 logo"><span class="jss25 left">&lt; </span>Boboan<span class="jss25 right"> &gt;</span></span></a></h6><div class="jss11"><div class="MuiTabs-root"><div class="MuiTabs-scroller MuiTabs-fixed" style="overflow:hidden"><div aria-label="simple tabs example" class="MuiTabs-flexContainer" role="tablist"><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">标签</span></button><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">归档</span></button><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">关于</span></button><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit" tabindex="-1" type="button" role="tab"><span class="MuiTab-wrapper">Screeps</span></button></div></div></div></div><div class="jss12"><div class="jss13"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div><div class="MuiInputBase-root jss14"><input type="text" placeholder="站内搜索" aria-label="search" class="MuiInputBase-input jss15"/></div></div><button class="MuiButtonBase-root MuiIconButton-root jss16 MuiIconButton-colorInherit MuiIconButton-edgeStart" tabindex="0" type="button" aria-label="open drawer"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"></path></svg></span></button></div></div><h3 class="jss22 "> <!-- -->前端通过Chrome插件跨域请求<!-- --> </h3><div role="presentation" class="jss26" style="transform:scale(0);visibility:hidden"><button class="MuiButtonBase-root MuiIconButton-root jss23 MuiIconButton-colorInherit MuiIconButton-edgeStart" tabindex="0" type="button" aria-label="open drawer"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg></span></button></div></div></header></div></header><div id="back-to-top-anchor"></div><main class="jss3"><div class="MuiContainer-root jss4 MuiContainer-disableGutters MuiContainer-maxWidthLg"><div class="jss5" style="width:0px;display:none"><div class="jss27"><div class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"><button class="MuiButtonBase-root MuiCardActionArea-root" tabindex="0" type="button"><div class="MuiCardMedia-root jss28 " style="background-image:url(&quot;/boboan.github.io/images/back1.jpg&quot;)" title="Contemplative Reptile"></div><div class="jss31 "></div><div class="MuiCardContent-root"><h2 class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom">Boboan</h2><p class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary">boboan.hand.touch(fish)</p></div><span class="MuiCardActionArea-focusHighlight"></span></button><div class="MuiCardActions-root MuiCardActions-spacing"><button class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall" tabindex="0" type="button"><span class="MuiButton-label">摸鱼</span></button><button class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall" tabindex="0" type="button"><span class="MuiButton-label">一会再摸</span></button></div></div><div class="jss32"><div class="MuiPaper-root MuiPaper-elevation4 MuiPaper-rounded"><nav class="MuiList-root jss33 MuiList-padding" aria-label="main mailbox folders"><a class="jss34" target="_blank" href="https://github.com/ranmeizi"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Github</span></div><img class="jss35" src="/boboan.github.io/images/github-icon.jpg"/></div></a><hr class="MuiDivider-root"/><a class="jss34" target="_blank" href="https://gitee.com/boboanzuiniubi"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Gitee</span></div><img class="jss35" src="/boboan.github.io/images/gitee-icon.jpg"/></div></a><hr class="MuiDivider-root"/><a class="jss34" target="_blank" href="https://www.jianshu.com/u/fc0db81874d5"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">简书</span></div><img class="jss35" src="/boboan.github.io/images/jianshu-icon.jpg"/></div></a></nav></div></div></div></div><div class="MuiPaper-root jss6 MuiPaper-elevation1 MuiPaper-rounded"><article><h1 class="utils_headingXl__1XecN" id="titleH1">前端通过Chrome插件跨域请求</h1><div class="utils_lightText__12Ckm"><time dateTime="2020-01-22">January 22, 2020</time></div><div class="note-view"><p>我们肯定学过，通过 jsonp 实现跨域请求，或是后台通过 cors 实现跨域请求，这次开拓一个新思路，使用 chrome 插件绕过浏览器同源策略</p>
+<p>参考文档：<a href="http://chrome.cenchy.com/">http://chrome.cenchy.com/</a>    <a href="https://developer.chrome.com/extensions">https://developer.chrome.com/extensions</a></p>
+<h4>DEMO 效果图</h4>
+<p><img src="./1/1.png" alt="使用background请求"></p>
+<h4>原理图</h4>
+<p><img src="./1/2.png" alt="请求过程"></p>
+<p>background.html：background 页是<a href="chrome://extensions/">chrome://extensions/</a>打开的，没有域，所以使用 background 请求不会被浏览器同源策略影响</p>
+<p>content_script:通过谷歌插件注入到页面中的 JS，使用他创建  <strong>EventDom </strong>用于接收提交按钮的请求发送给 background 页</p>
+<p>EventDom:因为 content_script 是无法直接与页面中的 JS 通信的，但是 content_script 可以操作页面中的 dom，我们可以使用 content_script 创建一个 EventDom.帮我们传递  <strong>事件</strong>  与  <strong>数据</strong></p>
+<h4>1. 创建一个 Chrome 插件项目</h4>
+<p><strong>创建 manifest.json</strong></p>
+<pre><code class="language-javascript">{
+	"manifest_version": 2,
+	"name": "One-click Kittens",
+	"description": "This extension demonstrates a browser action with kittens.",
+	"version": "1.0",
+	"permissions": [
+		"http://127.0.0.1/",
+		"tabs"
+	],
+	"browser_action": {
+		"default_icon": "icon.png",
+		"default_popup": "popup.html"
+	},
+	"background": {
+		"scripts": [
+			"background.js"
+		]
+	},
+	"web_accessible_resources": [
+		"/*"
+	],
+	"content_scripts": [
+		{
+			"matches": [
+				"http://127.0.0.1/"
+			],
+			"js": [
+				"content_script.js"
+			]
+		}
+	]
+}
+</code></pre>
+<h4>2.background.js</h4>
+<p>background 中通过 chrome.runtime 中的 api，可以实现 background 和 content_script 之间的的通信
+background 使用 tabId 给对应的 content_script 发送消息</p>
+<pre><code class="language-javascript">chrome.runtime.onMessage.addListener(function (e, sender) {
+	const { message, data } = e;
+	const tabId = sender.tab.id;
+	switch (message) {
+		case 'XHR':
+			request_proxy(data, tabId);
+			break;
+	}
+});
+function request_proxy({ url, method, data }, tabId) {
+	var XHR = new XMLHttpRequest();
+	XHR.open(method, url);
+	XHR.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+	XHR.send(data);
+	XHR.onreadystatechange = function () {
+		if (XHR.readyState === 4) {
+			chrome.tabs.sendMessage(tabId, {
+				message: 'XHR_response',
+				data: XHR.responseText,
+			});
+		}
+	};
+}
+</code></pre>
+<h4>3.content_script</h4>
+<p>使用 content_script 创建 EventDom。这里随便创建了个‘button’，没别的意思，任何标签都可以，只是使用 element.dispatchEvent 触发自定义事件。
+然后通过触发（dispatchEvent）/响应（addEventListener）EventDom 的事件与 HTML 页进行通信
+并通过 chrome 的 API 发送（chrome.runtime.sendMessage）/接收（chrome.runtime.onMessage.addListener）与 background 进行通信
+dispatchEvent:<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/dispatchEvent">https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/dispatchEvent</a></p>
+<pre><code class="language-javascript">var button = document.createElement('button'); //创建EventDom
+button.id = 'chrome_eventBus';
+button.addEventListener('request_proxy', function (e) {
+	let { eventData } = e.target.dataset;
+	eventData = JSON.parse(eventData);
+	let { url, method, data } = eventData;
+	chrome.runtime.sendMessage('jencllhednpfafogdnjmoneilbiifloc', {
+		message: 'XHR',
+		data: {
+			url,
+			method,
+			data,
+		},
+	});
+});
+document.body.appendChild(button);
+const e = new Event('content_script_Ready'); //触发自定义事件，在content_script注入并添加dom后，通知html页绑定Dom的事件
+document.body.dispatchEvent(e);
+
+chrome.runtime.onMessage.addListener(function (e, sender, sendResponse) {
+	console.log(e, sender, sendResponse);
+	const { message, data } = e;
+	switch (message) {
+		case 'XHR_response':
+			response(data);
+			break;
+	}
+});
+
+function response(data) {
+	button.dataset['eventData'] = data;
+	const e = new Event('response');
+	button.dispatchEvent(e);
+}
+</code></pre>
+<h4>4.Html 页</h4>
+<p>html 页就是你的项目，在这里你需要在 content_script 注入完毕后为 EventDOM 绑定事件。将请求通过 EventDom 发送给 content_script
+例如 登陆请求时 dispatch EventDom 的 request_proxy 事件，通过 html5 的 dataset 传递数据（也可以通过别的传,例如 localstorage，indexdb。。。）</p>
+<pre><code class="language-javascript">let iptUrl = document.getElementById('url');
+let iptMethod = document.getElementById('method');
+let iptData = document.getElementById('data');
+
+let $ChromeEventBus = null; //EventDom
+
+document.getElementById('req-default').addEventListener('click', () => {
+	let url = iptUrl.value;
+	let method = iptMethod.value;
+	let data = iptData.value;
+
+	let XHR = new XMLHttpRequest();
+	XHR.open(method, url);
+	XHR.send(JSON.stringify(data));
+});
+document.getElementById('req-background').addEventListener('click', () => {
+	let url = iptUrl.value;
+	let method = iptMethod.value;
+	let data = iptData.value;
+	let option = {
+		url,
+		method,
+		data,
+	};
+	$ChromeEventBus.dataset['eventData'] = JSON.stringify(option);
+	const e = new Event('request_proxy');
+	$ChromeEventBus.dispatchEvent(e);
+});
+document.body.addEventListener('content_script_Ready', Init); //当content_script注入完毕，并且创建EventBus后，进行事件的初始化
+function Init() {
+	$ChromeEventBus = document.getElementById('chrome_eventBus');
+	$ChromeEventBus.addEventListener('response', function (e) {
+		let { eventData } = e.target.dataset;
+		console.log('response', JSON.parse(eventData));
+	});
+}
+</code></pre>
+</div></article></div></div></main></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"postData":{"id":"1","contentHtml":"\u003cp\u003e我们肯定学过，通过 jsonp 实现跨域请求，或是后台通过 cors 实现跨域请求，这次开拓一个新思路，使用 chrome 插件绕过浏览器同源策略\u003c/p\u003e\n\u003cp\u003e参考文档：\u003ca href=\"http://chrome.cenchy.com/\"\u003ehttp://chrome.cenchy.com/\u003c/a\u003e    \u003ca href=\"https://developer.chrome.com/extensions\"\u003ehttps://developer.chrome.com/extensions\u003c/a\u003e\u003c/p\u003e\n\u003ch4\u003eDEMO 效果图\u003c/h4\u003e\n\u003cp\u003e\u003cimg src=\"./1/1.png\" alt=\"使用background请求\"\u003e\u003c/p\u003e\n\u003ch4\u003e原理图\u003c/h4\u003e\n\u003cp\u003e\u003cimg src=\"./1/2.png\" alt=\"请求过程\"\u003e\u003c/p\u003e\n\u003cp\u003ebackground.html：background 页是\u003ca href=\"chrome://extensions/\"\u003echrome://extensions/\u003c/a\u003e打开的，没有域，所以使用 background 请求不会被浏览器同源策略影响\u003c/p\u003e\n\u003cp\u003econtent_script:通过谷歌插件注入到页面中的 JS，使用他创建  \u003cstrong\u003eEventDom \u003c/strong\u003e用于接收提交按钮的请求发送给 background 页\u003c/p\u003e\n\u003cp\u003eEventDom:因为 content_script 是无法直接与页面中的 JS 通信的，但是 content_script 可以操作页面中的 dom，我们可以使用 content_script 创建一个 EventDom.帮我们传递  \u003cstrong\u003e事件\u003c/strong\u003e  与  \u003cstrong\u003e数据\u003c/strong\u003e\u003c/p\u003e\n\u003ch4\u003e1. 创建一个 Chrome 插件项目\u003c/h4\u003e\n\u003cp\u003e\u003cstrong\u003e创建 manifest.json\u003c/strong\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e{\n\t\"manifest_version\": 2,\n\t\"name\": \"One-click Kittens\",\n\t\"description\": \"This extension demonstrates a browser action with kittens.\",\n\t\"version\": \"1.0\",\n\t\"permissions\": [\n\t\t\"http://127.0.0.1/\",\n\t\t\"tabs\"\n\t],\n\t\"browser_action\": {\n\t\t\"default_icon\": \"icon.png\",\n\t\t\"default_popup\": \"popup.html\"\n\t},\n\t\"background\": {\n\t\t\"scripts\": [\n\t\t\t\"background.js\"\n\t\t]\n\t},\n\t\"web_accessible_resources\": [\n\t\t\"/*\"\n\t],\n\t\"content_scripts\": [\n\t\t{\n\t\t\t\"matches\": [\n\t\t\t\t\"http://127.0.0.1/\"\n\t\t\t],\n\t\t\t\"js\": [\n\t\t\t\t\"content_script.js\"\n\t\t\t]\n\t\t}\n\t]\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch4\u003e2.background.js\u003c/h4\u003e\n\u003cp\u003ebackground 中通过 chrome.runtime 中的 api，可以实现 background 和 content_script 之间的的通信\nbackground 使用 tabId 给对应的 content_script 发送消息\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003echrome.runtime.onMessage.addListener(function (e, sender) {\n\tconst { message, data } = e;\n\tconst tabId = sender.tab.id;\n\tswitch (message) {\n\t\tcase 'XHR':\n\t\t\trequest_proxy(data, tabId);\n\t\t\tbreak;\n\t}\n});\nfunction request_proxy({ url, method, data }, tabId) {\n\tvar XHR = new XMLHttpRequest();\n\tXHR.open(method, url);\n\tXHR.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');\n\tXHR.send(data);\n\tXHR.onreadystatechange = function () {\n\t\tif (XHR.readyState === 4) {\n\t\t\tchrome.tabs.sendMessage(tabId, {\n\t\t\t\tmessage: 'XHR_response',\n\t\t\t\tdata: XHR.responseText,\n\t\t\t});\n\t\t}\n\t};\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch4\u003e3.content_script\u003c/h4\u003e\n\u003cp\u003e使用 content_script 创建 EventDom。这里随便创建了个‘button’，没别的意思，任何标签都可以，只是使用 element.dispatchEvent 触发自定义事件。\n然后通过触发（dispatchEvent）/响应（addEventListener）EventDom 的事件与 HTML 页进行通信\n并通过 chrome 的 API 发送（chrome.runtime.sendMessage）/接收（chrome.runtime.onMessage.addListener）与 background 进行通信\ndispatchEvent:\u003ca href=\"https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/dispatchEvent\"\u003ehttps://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/dispatchEvent\u003c/a\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003evar button = document.createElement('button'); //创建EventDom\nbutton.id = 'chrome_eventBus';\nbutton.addEventListener('request_proxy', function (e) {\n\tlet { eventData } = e.target.dataset;\n\teventData = JSON.parse(eventData);\n\tlet { url, method, data } = eventData;\n\tchrome.runtime.sendMessage('jencllhednpfafogdnjmoneilbiifloc', {\n\t\tmessage: 'XHR',\n\t\tdata: {\n\t\t\turl,\n\t\t\tmethod,\n\t\t\tdata,\n\t\t},\n\t});\n});\ndocument.body.appendChild(button);\nconst e = new Event('content_script_Ready'); //触发自定义事件，在content_script注入并添加dom后，通知html页绑定Dom的事件\ndocument.body.dispatchEvent(e);\n\nchrome.runtime.onMessage.addListener(function (e, sender, sendResponse) {\n\tconsole.log(e, sender, sendResponse);\n\tconst { message, data } = e;\n\tswitch (message) {\n\t\tcase 'XHR_response':\n\t\t\tresponse(data);\n\t\t\tbreak;\n\t}\n});\n\nfunction response(data) {\n\tbutton.dataset['eventData'] = data;\n\tconst e = new Event('response');\n\tbutton.dispatchEvent(e);\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch4\u003e4.Html 页\u003c/h4\u003e\n\u003cp\u003ehtml 页就是你的项目，在这里你需要在 content_script 注入完毕后为 EventDOM 绑定事件。将请求通过 EventDom 发送给 content_script\n例如 登陆请求时 dispatch EventDom 的 request_proxy 事件，通过 html5 的 dataset 传递数据（也可以通过别的传,例如 localstorage，indexdb。。。）\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003elet iptUrl = document.getElementById('url');\nlet iptMethod = document.getElementById('method');\nlet iptData = document.getElementById('data');\n\nlet $ChromeEventBus = null; //EventDom\n\ndocument.getElementById('req-default').addEventListener('click', () =\u003e {\n\tlet url = iptUrl.value;\n\tlet method = iptMethod.value;\n\tlet data = iptData.value;\n\n\tlet XHR = new XMLHttpRequest();\n\tXHR.open(method, url);\n\tXHR.send(JSON.stringify(data));\n});\ndocument.getElementById('req-background').addEventListener('click', () =\u003e {\n\tlet url = iptUrl.value;\n\tlet method = iptMethod.value;\n\tlet data = iptData.value;\n\tlet option = {\n\t\turl,\n\t\tmethod,\n\t\tdata,\n\t};\n\t$ChromeEventBus.dataset['eventData'] = JSON.stringify(option);\n\tconst e = new Event('request_proxy');\n\t$ChromeEventBus.dispatchEvent(e);\n});\ndocument.body.addEventListener('content_script_Ready', Init); //当content_script注入完毕，并且创建EventBus后，进行事件的初始化\nfunction Init() {\n\t$ChromeEventBus = document.getElementById('chrome_eventBus');\n\t$ChromeEventBus.addEventListener('response', function (e) {\n\t\tlet { eventData } = e.target.dataset;\n\t\tconsole.log('response', JSON.parse(eventData));\n\t});\n}\n\u003c/code\u003e\u003c/pre\u003e\n","title":"前端通过Chrome插件跨域请求","tags":["extension"],"date":"2020-01-22","image":"/1/1.png","abstract":"我们肯定学过，通过 jsonp 实现跨域请求，或是后台通过 cors 实现跨域请求，这次开拓一个新思路，使用 chrome 插件绕过浏览器同源策略..."}},"__N_SSG":true},"page":"/posts/[id]","query":{"id":"1"},"buildId":"V73A7xuOJj_dCX4Sowzmy","assetPrefix":"/boboan.github.io","isFallback":false,"gsp":true}</script><script nomodule="" src="/boboan.github.io/_next/static/chunks/polyfills-8683bd742a84c1edd48c.js"></script><script src="/boboan.github.io/_next/static/chunks/webpack-1e2c3574589f9928e453.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/framework-30ca2fd61d3981f25bc6.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/commons-666c9ea77d97f6d5889d.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/main-49c7da928d6901734eef.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/620-c297bb4641d2e42f7ec2.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/pages/_app-4ea85989b9508dee6a70.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/506-6791c8fe1b38e799b0ee.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/555-5819a55def996b98014b.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/522-e45333ebcf36799b860c.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/257-d61dc7d0ca07f45c42bb.js" async=""></script><script src="/boboan.github.io/_next/static/chunks/pages/posts/%5Bid%5D-eb1b0e8fcea1baf1d35c.js" async=""></script><script src="/boboan.github.io/_next/static/V73A7xuOJj_dCX4Sowzmy/_buildManifest.js" async=""></script><script src="/boboan.github.io/_next/static/V73A7xuOJj_dCX4Sowzmy/_ssgManifest.js" async=""></script></body></html>
