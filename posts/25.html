@@ -1,0 +1,379 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width"/><title>非前端React简单学习(一) javascript</title><link rel="stylesheet" href="/boboan.github.io/prism/prism.css"/><meta name="keywords" content="javascript,react"/><meta name="description" content="javascript,react"/><meta name="next-head-count" content="6"/><meta name="viewport" content="initial-scale=1, width=device-width"/><meta name="author" content="Boboan"/><link rel="shortcut icon" href="/boboan.github.io/favicon.ico" type="image/x-icon"/><link rel="manifest" href="/boboan.github.io/manifest.json"/><script>
+              "serviceWorker" in navigator && window.addEventListener("load",function(){
+                navigator.serviceWorker.register('/boboan.github.io/sw.js?x=0.0.3')
+              })
+              </script><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="preload" href="/boboan.github.io/_next/static/css/49c704d070ca619f.css" as="style"/><link rel="stylesheet" href="/boboan.github.io/_next/static/css/49c704d070ca619f.css" data-n-g=""/><noscript data-n-css=""></noscript><script defer="" nomodule="" src="/boboan.github.io/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js"></script><script src="/boboan.github.io/_next/static/chunks/webpack-18f38da44cec651c.js" defer=""></script><script src="/boboan.github.io/_next/static/chunks/framework-3b5a00d5d7e8d93b.js" defer=""></script><script src="/boboan.github.io/_next/static/chunks/main-5ccbab268e1e1d15.js" defer=""></script><script src="/boboan.github.io/_next/static/chunks/pages/_app-214ffe9c92a0c833.js" defer=""></script><script src="/boboan.github.io/_next/static/chunks/901-de5250d0de6cca92.js" defer=""></script><script src="/boboan.github.io/_next/static/chunks/0-fd28c5d8a669cfc1.js" defer=""></script><script src="/boboan.github.io/_next/static/chunks/pages/posts/%5Bid%5D-099fe1992ed3694f.js" defer=""></script><script src="/boboan.github.io/_next/static/sFUQrHDn7cL7a1jlmj8Ox/_buildManifest.js" defer=""></script><script src="/boboan.github.io/_next/static/sFUQrHDn7cL7a1jlmj8Ox/_ssgManifest.js" defer=""></script><style data-href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format('woff')}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format('woff')}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format('woff')}@font-face{font-family:'Roboto';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfBBc-.woff) format('woff')}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fCRc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fABc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fCBc4AMP6lbBP.woff2) format('woff2');unicode-range:U+1F00-1FFF}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBxc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0370-03FF}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fCxc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fChc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Roboto';font-style:normal;font-weight:300;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4AMP6lQ.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu72xKKTU1Kvnz.woff2) format('woff2');unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu5mxKKTU1Kvnz.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu7mxKKTU1Kvnz.woff2) format('woff2');unicode-range:U+1F00-1FFF}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4WxKKTU1Kvnz.woff2) format('woff2');unicode-range:U+0370-03FF}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu7WxKKTU1Kvnz.woff2) format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu7GxKKTU1Kvnz.woff2) format('woff2');unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Roboto';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fCRc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fABc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fCBc4AMP6lbBP.woff2) format('woff2');unicode-range:U+1F00-1FFF}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBxc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0370-03FF}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fCxc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fChc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Roboto';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4AMP6lQ.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Roboto';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfCRc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:'Roboto';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfABc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:'Roboto';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfCBc4AMP6lbBP.woff2) format('woff2');unicode-range:U+1F00-1FFF}@font-face{font-family:'Roboto';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfBxc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0370-03FF}@font-face{font-family:'Roboto';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfCxc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:'Roboto';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfChc4AMP6lbBP.woff2) format('woff2');unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Roboto';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfBBc4AMP6lQ.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}</style></head><body class="custom_class"><div id="__next"><style data-emotion="css-global o6gwfi">html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;box-sizing:border-box;-webkit-text-size-adjust:100%;}*,*::before,*::after{box-sizing:inherit;}strong,b{font-weight:700;}body{margin:0;color:rgba(0, 0, 0, 0.87);font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1rem;line-height:1.5;letter-spacing:0.00938em;background-color:#fff;}@media print{body{background-color:#fff;}}body::backdrop{background-color:#fff;}</style><style data-emotion="css 14kxyr">.css-14kxyr{padding-top:48px;}</style><style data-emotion="css 1oxgxmo">.css-1oxgxmo{padding-top:48px;}</style><div class="MuiBox-root css-1oxgxmo"><header><style data-emotion="css 1unf03s">.css-1unf03s .MuiToolbar-root{padding:0;}</style><nav class="css-1unf03s"><style data-emotion="css 88oi7d">.css-88oi7d{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:100%;box-sizing:border-box;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;position:fixed;z-index:1100;top:0;left:auto;right:0;background-color:#f5f5f5;color:rgba(0, 0, 0, 0.87);}@media print{.css-88oi7d{position:absolute;}}</style><style data-emotion="css 1xcbb95">.css-1xcbb95{background-color:#fff;color:rgba(0, 0, 0, 0.87);-webkit-transition:box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;box-shadow:0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:100%;box-sizing:border-box;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;position:fixed;z-index:1100;top:0;left:auto;right:0;background-color:#f5f5f5;color:rgba(0, 0, 0, 0.87);}@media print{.css-1xcbb95{position:absolute;}}</style><header class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorDefault MuiAppBar-positionFixed mui-fixed css-1xcbb95"><style data-emotion="css 1ekb41w">.css-1ekb41w{width:100%;margin-left:auto;box-sizing:border-box;margin-right:auto;display:block;padding-left:16px;padding-right:16px;}@media (min-width:600px){.css-1ekb41w{padding-left:24px;padding-right:24px;}}@media (min-width:1536px){.css-1ekb41w{max-width:1536px;}}</style><div class="MuiContainer-root MuiContainer-maxWidthXl css-1ekb41w"><style data-emotion="css a15jfk">.css-a15jfk{position:relative;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding-left:16px;padding-right:16px;min-height:56px;width:100%;min-height:48px!important;}@media (min-width:600px){.css-a15jfk{padding-left:24px;padding-right:24px;}}@media (min-width:0px){@media (orientation: landscape){.css-a15jfk{min-height:48px;}}}@media (min-width:600px){.css-a15jfk{min-height:64px;}}</style><div class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-a15jfk"><style data-emotion="css 1o0y1dn">.css-1o0y1dn{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:100%;}</style><div class="css-1o0y1dn"><style data-emotion="css u4p24i">.css-u4p24i{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}</style><div class="css-u4p24i"><style data-emotion="css 1hskriy">.css-1hskriy{width:250px;}</style><div class="MuiBox-root css-1hskriy"><style data-emotion="css ifwihp animation-1jtiq51 animation-jgfc7h animation-1s0cgyd">.css-ifwihp{position:relative;display:inline-block;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;padding-right:16px;padding-left:8px;color:rgba(0, 0, 0, 0.87);font-size:24px;font-weight:500;cursor:pointer;}.css-ifwihp::after{position:absolute;content:'_';color:#5973ff;right:0;top:0;font-weight:700;-webkit-animation:animation-1s0cgyd 3s ease-in-out infinite;animation:animation-1s0cgyd 3s ease-in-out infinite;}.css-ifwihp .blue{font-weight:700;color:#5973ff;}.css-ifwihp .left{display:inline-block;-webkit-transition:0.2s;transition:0.2s;}.css-ifwihp .right{display:inline-block;-webkit-transition:0.2s;transition:0.2s;}.css-ifwihp:hover .left{-webkit-animation:animation-jgfc7h 0.5s ease-in-out;animation:animation-jgfc7h 0.5s ease-in-out;}.css-ifwihp:hover .right{-webkit-animation:animation-1jtiq51 0.5s ease-in-out;animation:animation-1jtiq51 0.5s ease-in-out;}@-webkit-keyframes animation-1jtiq51{0%{-webkit-transform:translateX(0);-moz-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0);}50%{-webkit-transform:translateX(4px);-moz-transform:translateX(4px);-ms-transform:translateX(4px);transform:translateX(4px);}100%{-webkit-transform:translateX(0);-moz-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0);}}@keyframes animation-1jtiq51{0%{-webkit-transform:translateX(0);-moz-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0);}50%{-webkit-transform:translateX(4px);-moz-transform:translateX(4px);-ms-transform:translateX(4px);transform:translateX(4px);}100%{-webkit-transform:translateX(0);-moz-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0);}}@-webkit-keyframes animation-jgfc7h{0%{-webkit-transform:translateX(0);-moz-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0);}50%{-webkit-transform:translateX(-4px);-moz-transform:translateX(-4px);-ms-transform:translateX(-4px);transform:translateX(-4px);}100%{-webkit-transform:translateX(0);-moz-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0);}}@keyframes animation-jgfc7h{0%{-webkit-transform:translateX(0);-moz-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0);}50%{-webkit-transform:translateX(-4px);-moz-transform:translateX(-4px);-ms-transform:translateX(-4px);transform:translateX(-4px);}100%{-webkit-transform:translateX(0);-moz-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0);}}@-webkit-keyframes animation-1s0cgyd{0%{opacity:0;}20%{opacity:1;}40%{opacity:0;}100%{opacity:0;}}@keyframes animation-1s0cgyd{0%{opacity:0;}20%{opacity:1;}40%{opacity:0;}100%{opacity:0;}}</style><span class="logo css-ifwihp"><span class="left blue">&lt; </span>Boboan<span class="right blue"> &gt;</span></span></div><style data-emotion="css iq45b0">.css-iq45b0 .MuiTabs-indicator{display:none;}</style><div class="MuiBox-root css-iq45b0"><style data-emotion="css orq8zk">.css-orq8zk{overflow:hidden;min-height:48px;-webkit-overflow-scrolling:touch;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}@media (max-width:599.95px){.css-orq8zk .MuiTabs-scrollButtons{display:none;}}</style><div class="MuiTabs-root css-orq8zk"><style data-emotion="css 1anid1y">.css-1anid1y{position:relative;display:inline-block;-webkit-flex:1 1 auto;-ms-flex:1 1 auto;flex:1 1 auto;white-space:nowrap;overflow-x:hidden;width:100%;}</style><div class="MuiTabs-scroller MuiTabs-fixed css-1anid1y" style="overflow:hidden;margin-bottom:0"><style data-emotion="css k008qs">.css-k008qs{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}</style><div class="MuiTabs-flexContainer css-k008qs" role="tablist"><a indicator="[object Object]" selected="" textColor="primary" value="0" href="/boboan.github.io"><style data-emotion="css 1n3lwq2">.css-1n3lwq2{font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:500;font-size:0.875rem;line-height:1.25;letter-spacing:0.02857em;text-transform:uppercase;max-width:360px;min-width:90px;position:relative;min-height:48px;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;padding:12px 16px;overflow:hidden;white-space:normal;text-align:center;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;color:inherit;opacity:0.6;}.css-1n3lwq2.Mui-selected{opacity:1;}.css-1n3lwq2.Mui-disabled{opacity:0.38;}</style><style data-emotion="css wigwbp">.css-wigwbp{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;position:relative;box-sizing:border-box;-webkit-tap-highlight-color:transparent;background-color:transparent;outline:0;border:0;margin:0;border-radius:0;padding:0;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-moz-appearance:none;-webkit-appearance:none;-webkit-text-decoration:none;text-decoration:none;color:inherit;font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:500;font-size:0.875rem;line-height:1.25;letter-spacing:0.02857em;text-transform:uppercase;max-width:360px;min-width:90px;position:relative;min-height:48px;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;padding:12px 16px;overflow:hidden;white-space:normal;text-align:center;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;color:inherit;opacity:0.6;}.css-wigwbp::-moz-focus-inner{border-style:none;}.css-wigwbp.Mui-disabled{pointer-events:none;cursor:default;}@media print{.css-wigwbp{-webkit-print-color-adjust:exact;color-adjust:exact;}}.css-wigwbp.Mui-selected{opacity:1;}.css-wigwbp.Mui-disabled{opacity:0.38;}</style><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit css-wigwbp" tabindex="-1" type="button" role="tab">首页</button></a><a textColor="primary" value="1" href="/boboan.github.io/posts"><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit css-wigwbp" tabindex="-1" type="button" role="tab">文章</button></a><a textColor="primary" value="2" href="/boboan.github.io/tags/screeps"><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit css-wigwbp" tabindex="-1" type="button" role="tab">Screeps</button></a><a textColor="primary" value="3" href="/boboan.github.io/demos"><button class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit css-wigwbp" tabindex="-1" type="button" role="tab">Demos</button></a></div></div></div></div></div><style data-emotion="css 1e4r7a2">.css-1e4r7a2{text-align:center;-webkit-flex:0 0 auto;-ms-flex:0 0 auto;flex:0 0 auto;font-size:1.5rem;padding:8px;border-radius:50%;overflow:visible;color:rgba(0, 0, 0, 0.54);-webkit-transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;height:-webkit-fit-content;height:-moz-fit-content;height:fit-content;}.css-1e4r7a2:hover{background-color:rgba(0, 0, 0, 0.04);}@media (hover: none){.css-1e4r7a2:hover{background-color:transparent;}}.css-1e4r7a2.Mui-disabled{background-color:transparent;color:rgba(0, 0, 0, 0.26);}</style><style data-emotion="css 10hcgjg">.css-10hcgjg{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;position:relative;box-sizing:border-box;-webkit-tap-highlight-color:transparent;background-color:transparent;outline:0;border:0;margin:0;border-radius:0;padding:0;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-moz-appearance:none;-webkit-appearance:none;-webkit-text-decoration:none;text-decoration:none;color:inherit;text-align:center;-webkit-flex:0 0 auto;-ms-flex:0 0 auto;flex:0 0 auto;font-size:1.5rem;padding:8px;border-radius:50%;overflow:visible;color:rgba(0, 0, 0, 0.54);-webkit-transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;height:-webkit-fit-content;height:-moz-fit-content;height:fit-content;}.css-10hcgjg::-moz-focus-inner{border-style:none;}.css-10hcgjg.Mui-disabled{pointer-events:none;cursor:default;}@media print{.css-10hcgjg{-webkit-print-color-adjust:exact;color-adjust:exact;}}.css-10hcgjg:hover{background-color:rgba(0, 0, 0, 0.04);}@media (hover: none){.css-10hcgjg:hover{background-color:transparent;}}.css-10hcgjg.Mui-disabled{background-color:transparent;color:rgba(0, 0, 0, 0.26);}</style><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-10hcgjg" tabindex="0" type="button"><style data-emotion="css vubbuv">.css-vubbuv{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:1em;height:1em;display:inline-block;fill:currentColor;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;font-size:1.5rem;}</style><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="Brightness4Icon"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"></path></svg></button></div></div></div></header></nav></header><style data-emotion="css 1qsxih2">.css-1qsxih2{width:100%;margin-left:auto;box-sizing:border-box;margin-right:auto;display:block;padding-left:16px;padding-right:16px;}@media (min-width:600px){.css-1qsxih2{padding-left:24px;padding-right:24px;}}@media (min-width:1200px){.css-1qsxih2{max-width:1200px;}}</style><div class="MuiContainer-root MuiContainer-maxWidthLg css-1qsxih2"><style data-emotion="css 13g8d5o">.css-13g8d5o{-webkit-flex:1;-ms-flex:1;flex:1;margin-top:16px;}</style><main class="css-13g8d5o"><style data-emotion="css yumteu">.css-yumteu{padding:16px;}.css-yumteu .post-view{max-width:800px;}.css-yumteu img{display:block;max-width:80%;margin:0 auto;}.css-yumteu .code-toolbar{margin-left:32px;max-width:600px;font-size:12px!important;}.css-yumteu pre{max-height:600px;}.css-yumteu a{color:#03a9f4;}</style><style data-emotion="css z27alm">.css-z27alm{background-color:#fff;color:rgba(0, 0, 0, 0.87);-webkit-transition:box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;border-radius:4px;box-shadow:0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);padding:16px;}.css-z27alm .post-view{max-width:800px;}.css-z27alm img{display:block;max-width:80%;margin:0 auto;}.css-z27alm .code-toolbar{margin-left:32px;max-width:600px;font-size:12px!important;}.css-z27alm pre{max-height:600px;}.css-z27alm a{color:#03a9f4;}</style><div class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-z27alm"><article><style data-emotion="css ur44v1">.css-ur44v1{margin:0;font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:2.125rem;line-height:1.235;letter-spacing:0.00735em;margin-bottom:0.35em;font-weight:800;}</style><h4 class="MuiTypography-root MuiTypography-h4 MuiTypography-gutterBottom css-ur44v1">非前端React简单学习(一) javascript</h4><style data-emotion="css 3vlblt">.css-3vlblt{margin:0;font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1rem;line-height:1.75;letter-spacing:0.00938em;margin-bottom:0.35em;}</style><h6 class="MuiTypography-root MuiTypography-subtitle1 MuiTypography-gutterBottom css-3vlblt">2021-09-29</h6><div class="post-view line-numbers MuiBox-root css-0"><h2>简介</h2>
+<p>web 开发其实是 html/js/css。前端开发们使用 javascript 脚本语言，调用 html 标准的 domapi 渲染dom标签，使用 js 逻辑处理按钮交互逻辑</p>
+<p>随着开发的业务越来越复杂，代码量越来越大，原始的 html / js / css 写出的代码复用困难，可读性低。于是聪明的程序员用新的开发思想编写了 React 框架</p>
+<p>本文介绍了一些知识点帮助非前端的小伙伴们学习react，快速建立起知识体系</p>
+<h2>文档建议</h2>
+<p>比较官方的文档推荐<br>
+js api 索引：https://developer.mozilla.org/zh-CN/<br>
+react： https://react.docschina.org/tutorial/tutorial.html</p>
+<h2>开发环境搭建</h2>
+<p>现在 web 开发会用到一些打包框架，来创建项目，语法转换，压缩代码，这些打包框架需要使用 nodejs 环境。包括 rn 也是需要 node 12+ 的环境。</p>
+<h3>nvm</h3>
+<blockquote>
+<p>推荐使用 nvm，而不是安装 nodejs<br>
+nvm 是一个 nodejs 版本管理工具，当你需要切换 nodejs 版本时，nvm 是一个很好的工具<br>
+windows 安装nvm ：https://www.jianshu.com/p/96f9317db0b5<br>
+mac 安装nvm：https://www.jianshu.com/p/622ad36ee020<br>
+mac 注意安装最新版本 nvm，并且 mac m1 芯片 需要使用兼容模式安装</p>
+</blockquote>
+<p>当终端 nvm 命令可以执行，且 node -v 正确显示 nodejs 版本 就算安装成功<br>
+然后使用 nvm install 安装nodejs<br>
+使用nvm list 查看已安装版本<br>
+使用nvm use &#x3C;virsion> 使用对应版本nodejs</p>
+<h3>vscode</h3>
+<blockquote>
+<p>主流ide<br>
+https://code.visualstudio.com/</p>
+</blockquote>
+<h2>html js css 学习</h2>
+<p>js</p>
+<ul>
+<li>变量声明</li>
+</ul>
+<pre><code class="language-javascript">    var name = '张三'
+    var age = 18
+    console.log(name)
+    console.log(age)
+</code></pre>
+<ul>
+<li>类型/类型判断</li>
+</ul>
+<p>基础类型：string number boolean null undefined symbol<br>
+null 会被<code>typeof</code>判断为 object 但他与引用类型是有区别的</p>
+<pre><code class="language-javascript">    // 字符串
+    var name = '张三'
+    console.log(typeof name) // string
+    // 数字
+    var age = 18
+    console.log(typeof age) // number
+    // 布尔
+    var isMan = true
+    console.log(typeof isMan) // boolean
+    // 空对象
+    var girlfriend = null
+    console.log(typeof girlfriend) // null
+    // 未定义
+    var baby
+    console.log(typeof baby) // object
+    // 唯一值
+    var id = Symbol('张三')
+    console.log(typeof id) // symbol
+</code></pre>
+<p>引用类型：object function array 等</p>
+<pre><code class="language-javascript">    // 对象
+    var person = {
+        name: '张三',
+        age: 18,
+        isMan: true,
+        girlfriend: null
+    }
+    // 对象取值 .
+    console.log(person.name)
+    // 对象取值 []
+    console.log(person['name'])
+
+    // 数组 成员可以是任意类型,甚至可以是函数
+    var array = ['张三',18,true,null,function(){}]
+    // 数组取值 [] 下标从0开始
+    console.log(array[0])
+</code></pre>
+<p>从内存来看，基础类型的变量对应着实际的值，而引用类型的变量对应着存储着这些基础类型值的地址，这意味着当你使用=把一个引用类型的值赋给变量时，存储的实际上是地址，并没有生成一个新的对象，而当你使用key访问并修改新变量上的值时，老变量也会受到影响。这时我们就需要深拷贝去创建一个新的对象</p>
+<pre><code class="language-javascript">    var obj1 = {
+        name: '鲤鱼王',
+        level: 19
+    }
+    var obj2 = obj1
+    obj2.level++
+    obj2.name = '暴鲤龙'
+    console.log(obj1, obj2)
+</code></pre>
+<ul>
+<li>深拷贝/浅拷贝</li>
+</ul>
+<p>上面说的，自己百度吧</p>
+<ul>
+<li>函数<br>
+实现功能的代码块<br>
+funtion 和 箭头函数</li>
+</ul>
+<pre><code class="language-javascript">    function add(num1, num2){
+        return num1 + num2
+    }
+    console.log(add(1,2)) // 3
+
+    const addLambda = (num1, num2) => num1 + num2
+ 
+    console.log(addLambda(1,2)) // 3
+</code></pre>
+<ul>
+<li>if / switch<br>
+条件分支</li>
+</ul>
+<pre><code class="language-javascript">    var person = {
+        name: '张三',
+        age: 18,
+        isMan: true,
+        girlfriend: null
+    }
+    // if判断
+    if(person.isMan === true){
+        console.log('进入男厕所')
+    }else{
+        console.log('进入女厕所')
+    }
+    // switch
+    switch(person.isMan){
+        case true: console.log('进入男厕所');break;
+        case false: console.log('进入女厕所');break;
+        default: console.log('mei sha yi yi ');break
+    }
+</code></pre>
+<ul>
+<li>循环<br>
+for 和 while<br>
+这个应该不用讲</li>
+<li>垃圾回收与闭包</li>
+</ul>
+<p>除非你知道闭包是怎么回事，不然躲着点写<br>
+js的垃圾回收机制简单来说就是在变量无论如何也访问不到时，js会将这个变量回收<br>
+例如</p>
+<pre><code class="language-javascript">    // 例如一个函数执行结束之后
+    function fn(){
+        var a = 1
+    }
+    fn()
+    // 例如失去引用
+    var a = {
+        name:'a'
+    }
+    // 这里的‘a’失去了引用
+    a.name=1
+</code></pre>
+<p>不过，一旦A函数返回另一个B函数，在B函数中又引用了A函数作用域中的变量，那么就算A函数运行完这个B函数也会一直引用A函数作用域中的变量，造成不回收，形成闭包。可以利用这一特性存储一些数据</p>
+<pre><code class="language-javascript">    function A{
+        var name='A'
+        return function B(){
+            console.log(name)
+        }
+    }
+    // 这里就形成了一个闭包
+    const fnB=A()
+</code></pre>
+<ul>
+<li>类 与 原型 面向对象<br>
+虽然支持 class 语法，但 js 中是的类是用原型链实现的，不建议初学去了解，语法介绍一下</li>
+</ul>
+<pre><code class="language-javascript">    // 单位
+    class Item {
+        // 名称
+        name = ''
+        // 位置
+        pos={
+            x:0,
+            y:0
+        }
+        constructor(name){
+            this.name = name
+        }
+        // 移动
+        moveTo(x,y){
+            this.pos.x=x
+            this.pos.y=y
+            console.log(`${this.name}移动到了x=${this.pos.x},y=${this.pos.y}`)
+        }
+    }
+  
+
+    // 宝可梦
+    class Pokemon extends Item {
+       
+        // 技能
+        skills = []
+        
+        // 放技能
+        useSkill(index){
+            console.log(this.name+'!,快使用'+this.skills[index])
+        }
+        // 学习技能
+        learnSkill(skillName){
+            this.skills.push(skillName)
+        }
+    }
+
+    const pikachu = new Pokemon('皮卡丘')
+    pikachu.moveTo(25,30)
+    pikachu.learnSkill('十万伏特！！')
+    pikachu.learnSkill('快躲开！！')
+    pikachu.useSkill(1)
+</code></pre>
+<p>这样我们就创建好了 Item 类 作为地图上的物体，以及 Pokemon 类 去做宝可梦的动作</p>
+<ul>
+<li>常用调试api</li>
+</ul>
+<pre><code class="language-javascript">    // 等级info 
+    console.log('你好')
+    // 等级warning
+    console.warn('你好')
+    // 等级error
+    console.error('你好')
+    // 浏览器断点
+    debugger;
+</code></pre>
+<ul>
+<li>隐式转换<br>
+有趣的jacascript
+比如 + - 这些运算符，会对变量进行隐式转换
+常见number+string的转换是调用对象的toString方法
+或者-的把变量强制转换number类型</li>
+</ul>
+<pre><code class="language-javascript">    console.log(1+'1') // '11'
+    console.log(1-'1') // 0
+    console.log(1-[]) // 1
+    console.log(1+[]) // '1'
+    console.log(1+{}) // '1[object Object]'
+</code></pre>
+<ul>
+<li>变量提升和作用域<br>
+了解就行<br>
+var 和 funcion 的变量会提升至作用域顶端
+而 const let 和 箭头函数 不会</li>
+</ul>
+<pre><code class="language-javascript">    // var 提升
+    console.log(a) // undefined
+    var a = 1
+    console.log(a) // 1
+    // function 提升
+    fn1()
+
+    function fn1(){
+        console.log(1)
+    }
+
+    fn2() // 代码执行到这里就会报错 fn2 is not defined
+
+    const fn2 = () => console.log(2)
+</code></pre>
+<ul>
+<li>ajax 请求<br>
+我们用封装好的axios库，并不需要自己手写ajax请求，了解就好<br>
+原生请求有  XMLHttpRequest 和 fetch 可以去 mdn 查</li>
+<li>es6 常用api<br>
+博客：https://es6.ruanyifeng.com/<br>
+文档：https://developer.mozilla.org/zh-CN/</li>
+<li>异步 宏任务微任务 和事件循环<br>
+这也不用学，了解就好<br>
+js容器是v8引擎，v8引擎是单线程，当他遇到开销较大的代码是就会卡住，导致后续支持渲染的函数滞后运行，所以js提供了一个事件循环实现异步<br>
+常见的异步函数有定时器 setTimeout/setInterval，promise，ajax
+异步任务会在主线程空闲时通过事件循环被调用<br>
+其中 setTimeout/setInterval 是宏任务，放进宏任务队列<br>
+其中 promise 是微任务 放进微任务队列<br>
+微任务的优先级比宏任务高<br>
+常用<code>Promise.resolve().then()</code> 创建一个微任务<br>
+也可以通过<code>queueMicrotask</code> 创建一个微任务</li>
+</ul>
+<pre><code class="language-javascript">    setTimeout(()=>console.log(1),0)
+    Promise.resolve().then(()=>console.log(2))
+    console.log(3)
+    // 3会比12先输出，因为12是异步任务
+    // 2会比1先输出，因为Promise创建的是微任务
+</code></pre>
+<ul>
+<li>Promise
+Promise的功能</li>
+</ul>
+<ol>
+<li>封装了一组状态 pedding/fulfilled/rejected</li>
+<li>内部状态，只有创建promise时传入的function的resolve和reject可以修改</li>
+<li>状态一旦修改就锁定了</li>
+<li>可以通过.then .catch 函数执行不同状态的回调</li>
+</ol>
+<p>通常我们用promise是一个未知异步结果，对他的成功/失败状态执行不同的function
+ajax 是最常见的异步</p>
+<pre><code class="language-javascript">    // img 的 onload 和 onerror 为例
+    function reqSrc(img){
+        return new Promise((resolve,reject)=>{
+            img.src='http://heihei.com/pics/wuwuwu.jpg'
+            img.onload=resolve
+            img.onerror=reject
+        })
+    }
+
+    const imgReqSreResult=reqSrc(img)
+    imgReqSreResult.then(()=>{
+        console.log('成功了')
+    }).catch(()=>{
+        console.log('失败了')
+    })
+</code></pre>
+<ul>
+<li>async/await
+async/await 原理是生成器函数的语法糖，生成器函数可以在下一次迭代前停止执行<br>
+async声明的是一个异步函数，他将返回一个Promise，在async函数中使用await 修饰的异步函数，会在其执行结束之前阻塞后续代码执行(虽然说阻塞，但实际上还是被事件循环调用，不会影响主线程)</li>
+</ul>
+<pre><code class="language-javascript">    async function InitImg(){
+        function reqSrc(img){
+            return new Promise((resolve,reject)=>{
+                img.src='http://heihei.com/pics/wuwuwu.jpg'
+                img.onload=resolve
+                img.onerror=reject
+            })
+        }
+
+        const imgReqSreResult = await reqSrc(img)
+
+        console.log(1) // 虽然 reqSrc是个异步任务，log函数还是会在其执行后打印，因为这是在async函数中 reqSrc这个promise被await了
+    }
+</code></pre>
+<ul>
+<li>try/catch<br>
+异常捕获</li>
+</ul>
+<pre><code class="language-javascript">    var obj={
+        skillList:['十万伏特']
+    }
+    try{
+        console.log(obj.skillList[1])
+    }catch(e){
+        console.log(e)
+    }
+</code></pre>
+<ul>
+<li>模块化<br>
+2种风格 commonjs 和 esmodule<br>
+commonjs 通常用在 nodejs 他的语法</li>
+</ul>
+<pre><code class="language-javascript">    // main.js
+    const moduleA = require('./a.js')
+    ...
+    // a.js
+    module.exports={
+        name:'moduleA'
+    }
+</code></pre>
+<p>esmodule 用在浏览器</p>
+<pre><code class="language-javascript">    // main.js
+    import moduleA from './a.js'
+    ...
+
+    // a.js
+    export default {
+        name:'moduleA'
+    }
+</code></pre>
+<p>html - 并不重要,百度看文档就行</p>
+<ul>
+<li>标签</li>
+<li>dom api</li>
+</ul>
+<p>css - 看文档就行</p>
+<ul>
+<li>样式表</li>
+<li>flex 布局<br>
+移动端常用布局<br>
+博客：http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html</li>
+</ul>
+</div></article></div></main></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"postData":{"id":"25","title":"非前端React简单学习(一) javascript","tags":["javascript","react"],"date":"2021-09-29","image":"/boboan.github.io/images/tags/js.jpg","abstract":"web 开发其实是 html/js/css。前端开发们使用 javascript 脚本语言，调用 html 标准的 domapi 渲染dom标签，使用 js 逻辑处理按钮交互逻辑","contentHtml":"\u003ch2\u003e简介\u003c/h2\u003e\n\u003cp\u003eweb 开发其实是 html/js/css。前端开发们使用 javascript 脚本语言，调用 html 标准的 domapi 渲染dom标签，使用 js 逻辑处理按钮交互逻辑\u003c/p\u003e\n\u003cp\u003e随着开发的业务越来越复杂，代码量越来越大，原始的 html / js / css 写出的代码复用困难，可读性低。于是聪明的程序员用新的开发思想编写了 React 框架\u003c/p\u003e\n\u003cp\u003e本文介绍了一些知识点帮助非前端的小伙伴们学习react，快速建立起知识体系\u003c/p\u003e\n\u003ch2\u003e文档建议\u003c/h2\u003e\n\u003cp\u003e比较官方的文档推荐\u003cbr\u003e\njs api 索引：https://developer.mozilla.org/zh-CN/\u003cbr\u003e\nreact： https://react.docschina.org/tutorial/tutorial.html\u003c/p\u003e\n\u003ch2\u003e开发环境搭建\u003c/h2\u003e\n\u003cp\u003e现在 web 开发会用到一些打包框架，来创建项目，语法转换，压缩代码，这些打包框架需要使用 nodejs 环境。包括 rn 也是需要 node 12+ 的环境。\u003c/p\u003e\n\u003ch3\u003envm\u003c/h3\u003e\n\u003cblockquote\u003e\n\u003cp\u003e推荐使用 nvm，而不是安装 nodejs\u003cbr\u003e\nnvm 是一个 nodejs 版本管理工具，当你需要切换 nodejs 版本时，nvm 是一个很好的工具\u003cbr\u003e\nwindows 安装nvm ：https://www.jianshu.com/p/96f9317db0b5\u003cbr\u003e\nmac 安装nvm：https://www.jianshu.com/p/622ad36ee020\u003cbr\u003e\nmac 注意安装最新版本 nvm，并且 mac m1 芯片 需要使用兼容模式安装\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003cp\u003e当终端 nvm 命令可以执行，且 node -v 正确显示 nodejs 版本 就算安装成功\u003cbr\u003e\n然后使用 nvm install 安装nodejs\u003cbr\u003e\n使用nvm list 查看已安装版本\u003cbr\u003e\n使用nvm use \u0026#x3C;virsion\u003e 使用对应版本nodejs\u003c/p\u003e\n\u003ch3\u003evscode\u003c/h3\u003e\n\u003cblockquote\u003e\n\u003cp\u003e主流ide\u003cbr\u003e\nhttps://code.visualstudio.com/\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003ch2\u003ehtml js css 学习\u003c/h2\u003e\n\u003cp\u003ejs\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e变量声明\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e    var name = '张三'\n    var age = 18\n    console.log(name)\n    console.log(age)\n\u003c/code\u003e\u003c/pre\u003e\n\u003cul\u003e\n\u003cli\u003e类型/类型判断\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e基础类型：string number boolean null undefined symbol\u003cbr\u003e\nnull 会被\u003ccode\u003etypeof\u003c/code\u003e判断为 object 但他与引用类型是有区别的\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e    // 字符串\n    var name = '张三'\n    console.log(typeof name) // string\n    // 数字\n    var age = 18\n    console.log(typeof age) // number\n    // 布尔\n    var isMan = true\n    console.log(typeof isMan) // boolean\n    // 空对象\n    var girlfriend = null\n    console.log(typeof girlfriend) // null\n    // 未定义\n    var baby\n    console.log(typeof baby) // object\n    // 唯一值\n    var id = Symbol('张三')\n    console.log(typeof id) // symbol\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e引用类型：object function array 等\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e    // 对象\n    var person = {\n        name: '张三',\n        age: 18,\n        isMan: true,\n        girlfriend: null\n    }\n    // 对象取值 .\n    console.log(person.name)\n    // 对象取值 []\n    console.log(person['name'])\n\n    // 数组 成员可以是任意类型,甚至可以是函数\n    var array = ['张三',18,true,null,function(){}]\n    // 数组取值 [] 下标从0开始\n    console.log(array[0])\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e从内存来看，基础类型的变量对应着实际的值，而引用类型的变量对应着存储着这些基础类型值的地址，这意味着当你使用=把一个引用类型的值赋给变量时，存储的实际上是地址，并没有生成一个新的对象，而当你使用key访问并修改新变量上的值时，老变量也会受到影响。这时我们就需要深拷贝去创建一个新的对象\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e    var obj1 = {\n        name: '鲤鱼王',\n        level: 19\n    }\n    var obj2 = obj1\n    obj2.level++\n    obj2.name = '暴鲤龙'\n    console.log(obj1, obj2)\n\u003c/code\u003e\u003c/pre\u003e\n\u003cul\u003e\n\u003cli\u003e深拷贝/浅拷贝\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e上面说的，自己百度吧\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e函数\u003cbr\u003e\n实现功能的代码块\u003cbr\u003e\nfuntion 和 箭头函数\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e    function add(num1, num2){\n        return num1 + num2\n    }\n    console.log(add(1,2)) // 3\n\n    const addLambda = (num1, num2) =\u003e num1 + num2\n \n    console.log(addLambda(1,2)) // 3\n\u003c/code\u003e\u003c/pre\u003e\n\u003cul\u003e\n\u003cli\u003eif / switch\u003cbr\u003e\n条件分支\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e    var person = {\n        name: '张三',\n        age: 18,\n        isMan: true,\n        girlfriend: null\n    }\n    // if判断\n    if(person.isMan === true){\n        console.log('进入男厕所')\n    }else{\n        console.log('进入女厕所')\n    }\n    // switch\n    switch(person.isMan){\n        case true: console.log('进入男厕所');break;\n        case false: console.log('进入女厕所');break;\n        default: console.log('mei sha yi yi ');break\n    }\n\u003c/code\u003e\u003c/pre\u003e\n\u003cul\u003e\n\u003cli\u003e循环\u003cbr\u003e\nfor 和 while\u003cbr\u003e\n这个应该不用讲\u003c/li\u003e\n\u003cli\u003e垃圾回收与闭包\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e除非你知道闭包是怎么回事，不然躲着点写\u003cbr\u003e\njs的垃圾回收机制简单来说就是在变量无论如何也访问不到时，js会将这个变量回收\u003cbr\u003e\n例如\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e    // 例如一个函数执行结束之后\n    function fn(){\n        var a = 1\n    }\n    fn()\n    // 例如失去引用\n    var a = {\n        name:'a'\n    }\n    // 这里的‘a’失去了引用\n    a.name=1\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e不过，一旦A函数返回另一个B函数，在B函数中又引用了A函数作用域中的变量，那么就算A函数运行完这个\bB函数也会一直引用A函数作用域中的变量，造成不回收，形成闭包。可以利用这一特性存储一些数据\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e    function A{\n        var name='A'\n        return function B(){\n            console.log(name)\n        }\n    }\n    // 这里就形成了一个闭包\n    const fnB=A()\n\u003c/code\u003e\u003c/pre\u003e\n\u003cul\u003e\n\u003cli\u003e类 与 原型 面向对象\u003cbr\u003e\n虽然支持 class 语法，但 js 中是的类是用原型链实现的，不建议初学去了解，语法介绍一下\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e    // 单位\n    class Item {\n        // 名称\n        name = ''\n        // 位置\n        pos={\n            x:0,\n            y:0\n        }\n        constructor(name){\n            this.name = name\n        }\n        // 移动\n        moveTo(x,y){\n            this.pos.x=x\n            this.pos.y=y\n            console.log(`${this.name}移动到了x=${this.pos.x},y=${this.pos.y}`)\n        }\n    }\n  \n\n    // 宝可梦\n    class Pokemon extends Item {\n       \n        // 技能\n        skills = []\n        \n        // 放技能\n        useSkill(index){\n            console.log(this.name+'!,快使用'+this.skills[index])\n        }\n        // 学习技能\n        learnSkill(skillName){\n            this.skills.push(skillName)\n        }\n    }\n\n    const pikachu = new Pokemon('皮卡丘')\n    pikachu.moveTo(25,30)\n    pikachu.learnSkill('十万伏特！！')\n    pikachu.learnSkill('快躲开！！')\n    pikachu.useSkill(1)\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003e这样我们就创建好了 Item 类 作为地图上的物体，以及 Pokemon 类 去做宝可梦的动作\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e常用调试api\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e    // 等级info \n    console.log('你好')\n    // 等级warning\n    console.warn('你好')\n    // 等级error\n    console.error('你好')\n    // 浏览器断点\n    debugger;\n\u003c/code\u003e\u003c/pre\u003e\n\u003cul\u003e\n\u003cli\u003e隐式转换\u003cbr\u003e\n有趣的jacascript\n比如 + - 这些运算符，会对变量进行隐式转换\n常见number+string的转换是调用对象的toString方法\n或者-的把变量强制转换number类型\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e    console.log(1+'1') // '11'\n    console.log(1-'1') // 0\n    console.log(1-[]) // 1\n    console.log(1+[]) // '1'\n    console.log(1+{}) // '1[object Object]'\n\u003c/code\u003e\u003c/pre\u003e\n\u003cul\u003e\n\u003cli\u003e变量提升和作用域\u003cbr\u003e\n了解就行\u003cbr\u003e\nvar 和 funcion 的变量会提升至作用域顶端\n而 const let 和 箭头函数 不会\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e    // var 提升\n    console.log(a) // undefined\n    var a = 1\n    console.log(a) // 1\n    // function 提升\n    fn1()\n\n    function fn1(){\n        console.log(1)\n    }\n\n    fn2() // 代码执行到这里就会报错 fn2 is not defined\n\n    const fn2 = () =\u003e console.log(2)\n\u003c/code\u003e\u003c/pre\u003e\n\u003cul\u003e\n\u003cli\u003eajax 请求\u003cbr\u003e\n我们用封装好的axios库，并不需要自己手写ajax请求，了解就好\u003cbr\u003e\n原生请求有  XMLHttpRequest 和 fetch 可以去 mdn 查\u003c/li\u003e\n\u003cli\u003ees6 常用api\u003cbr\u003e\n博客：https://es6.ruanyifeng.com/\u003cbr\u003e\n文档：https://developer.mozilla.org/zh-CN/\u003c/li\u003e\n\u003cli\u003e异步 宏任务微任务 和事件循环\u003cbr\u003e\n这也不用学，了解就好\u003cbr\u003e\njs容器是v8引擎，v8引擎是单线程，当他遇到开销较大的代码是就会卡住，导致后续支持渲染的函数滞后运行，所以js提供了一个事件循环实现异步\u003cbr\u003e\n常见的异步函数有定时器 setTimeout/setInterval，promise，ajax\n异步任务会在主线程空闲时通过事件循环被调用\u003cbr\u003e\n其中 setTimeout/setInterval 是宏任务，放进宏任务队列\u003cbr\u003e\n其中 promise 是微任务 放进微任务队列\u003cbr\u003e\n微任务的优先级比宏任务高\u003cbr\u003e\n常用\u003ccode\u003ePromise.resolve().then()\u003c/code\u003e 创建一个微任务\u003cbr\u003e\n也可以通过\u003ccode\u003equeueMicrotask\u003c/code\u003e 创建一个微任务\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e    setTimeout(()=\u003econsole.log(1),0)\n    Promise.resolve().then(()=\u003econsole.log(2))\n    console.log(3)\n    // 3会比12先输出，因为12是异步任务\n    // 2会比1先输出，因为Promise创建的是微任务\n\u003c/code\u003e\u003c/pre\u003e\n\u003cul\u003e\n\u003cli\u003ePromise\nPromise的功能\u003c/li\u003e\n\u003c/ul\u003e\n\u003col\u003e\n\u003cli\u003e封装了一组状态 pedding/fulfilled/rejected\u003c/li\u003e\n\u003cli\u003e内部状态，只有创建promise时传入的function的resolve和reject可以修改\u003c/li\u003e\n\u003cli\u003e状态一旦修改就锁定了\u003c/li\u003e\n\u003cli\u003e可以通过.then .catch 函数执行不同状态的回调\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003e通常我们用promise是一个未知异步结果，对他的成功/失败状态执行不同的function\najax 是最常见的异步\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e    // img 的 onload 和 onerror 为例\n    function reqSrc(img){\n        return new Promise((resolve,reject)=\u003e{\n            img.src='http://heihei.com/pics/wuwuwu.jpg'\n            img.onload=resolve\n            img.onerror=reject\n        })\n    }\n\n    const imgReqSreResult=reqSrc(img)\n    imgReqSreResult.then(()=\u003e{\n        console.log('成功了')\n    }).catch(()=\u003e{\n        console.log('失败了')\n    })\n\u003c/code\u003e\u003c/pre\u003e\n\u003cul\u003e\n\u003cli\u003easync/await\nasync/await 原理是生成器函数的语法糖，生成器函数可以在下一次迭代前停止执行\u003cbr\u003e\nasync声明的是一个异步函数，他将返回一个Promise，在async函数中使用await 修饰的异步函数，会在其执行结束之前阻塞后续代码执行(虽然说阻塞，但实际上还是被事件循环调用，不会影响主线程)\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e    async function InitImg(){\n        function reqSrc(img){\n            return new Promise((resolve,reject)=\u003e{\n                img.src='http://heihei.com/pics/wuwuwu.jpg'\n                img.onload=resolve\n                img.onerror=reject\n            })\n        }\n\n        const imgReqSreResult = await reqSrc(img)\n\n        console.log(1) // 虽然 reqSrc是个异步任务，log函数还是会在其执行后打印，因为这是在async函数中 reqSrc这个promise被await了\n    }\n\u003c/code\u003e\u003c/pre\u003e\n\u003cul\u003e\n\u003cli\u003etry/catch\u003cbr\u003e\n异常捕获\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e    var obj={\n        skillList:['十万伏特']\n    }\n    try{\n        console.log(obj.skillList[1])\n    }catch(e){\n        console.log(e)\n    }\n\u003c/code\u003e\u003c/pre\u003e\n\u003cul\u003e\n\u003cli\u003e模块化\u003cbr\u003e\n2种风格 commonjs 和 esmodule\u003cbr\u003e\ncommonjs 通常用在 nodejs 他的语法\u003c/li\u003e\n\u003c/ul\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e    // main.js\n    const moduleA = require('./a.js')\n    ...\n    // a.js\n    module.exports={\n        name:'moduleA'\n    }\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eesmodule 用在浏览器\u003c/p\u003e\n\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e    // main.js\n    import moduleA from './a.js'\n    ...\n\n    // a.js\n    export default {\n        name:'moduleA'\n    }\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003ehtml - 并不重要,百度看文档就行\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e标签\u003c/li\u003e\n\u003cli\u003edom api\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003ecss - 看文档就行\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e样式表\u003c/li\u003e\n\u003cli\u003eflex 布局\u003cbr\u003e\n移动端常用布局\u003cbr\u003e\n博客：http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html\u003c/li\u003e\n\u003c/ul\u003e\n"},"allTags":["nextjs","remark","typescript","taro","webpack","loader","小程序插件","javascript","react","extention","github page","screeps","nodejs","闲的","canvas","promise","vue","Parcel","eggjs","extension"]},"__N_SSG":true},"page":"/posts/[id]","query":{"id":"25"},"buildId":"sFUQrHDn7cL7a1jlmj8Ox","assetPrefix":"/boboan.github.io","isFallback":false,"gsp":true}</script></body></html>

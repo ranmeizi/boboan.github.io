@@ -1,0 +1,15 @@
+{
+    "background_color": "#DEE1E7",
+    "description": "波波安的网站",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "images/ji.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "name": "boboan-web",
+    "short_name": "boboan",
+    "start_url": "/boboan.github.io/index.html"
+}
